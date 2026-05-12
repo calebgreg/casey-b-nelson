@@ -6,8 +6,54 @@ export default function Home() {
   const [agencyForm, setAgencyForm] = useState({ agency: "", problem: "", submitted: false });
   const [briefSignup, setBriefSignup] = useState({ email: "", submitted: false });
   const [hoveredVendor, setHoveredVendor] = useState(null);
+  const [wordmarkColor, setWordmarkColor] = useState("#ffffff");
   const canvasRef = useRef(null);
   const cursorRef = useRef({ x: 0, y: 0 });
+
+  // Scroll-driven wordmark color cycle
+  useEffect(() => {
+    // A palette of colors to cycle through as the user scrolls
+    const palette = [
+      [255, 255, 255],       // white (top)
+      [61, 202, 184],        // teal
+      [240, 235, 224],       // cream
+      [200, 150, 255],       // lavender
+      [61, 202, 184],        // teal again
+      [255, 200, 100],       // warm gold
+      [255, 255, 255],       // back to white
+    ];
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    const interpolateColor = (t) => {
+      // t is 0..1 across full page scroll
+      const scaled = t * (palette.length - 1);
+      const idx = Math.min(Math.floor(scaled), palette.length - 2);
+      const frac = scaled - idx;
+      const from = palette[idx];
+      const to = palette[idx + 1];
+      const r = Math.round(lerp(from[0], to[0], frac));
+      const g = Math.round(lerp(from[1], to[1], frac));
+      const b = Math.round(lerp(from[2], to[2], frac));
+      return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const t = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0;
+        setWordmarkColor(interpolateColor(t));
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Load fonts once on mount
   useEffect(() => {
@@ -1138,9 +1184,9 @@ export default function Home() {
           fontSize: 38,
           lineHeight: 1,
           letterSpacing: "0.005em",
-          mixBlendMode: "difference",
-          color: "#fff",
+          color: wordmarkColor,
           gap: 4,
+          transition: "color 0.1s linear",
         }}
         onClick={() => goTo("home")}
       >
