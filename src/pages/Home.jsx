@@ -10,6 +10,15 @@ export default function Home() {
   const canvasRef = useRef(null);
   const cursorRef = useRef({ x: 0, y: 0 });
 
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll for nav glass effect
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Scroll-driven wordmark color cycle
   useEffect(() => {
     // A palette of colors to cycle through as the user scrolls
@@ -1172,90 +1181,93 @@ export default function Home() {
         ...fontDisplay,
       }}
     >
-      {/* TOP-LEFT: signature wordmark */}
-      <div
-        className="fixed cursor-pointer inline-flex items-start"
+      {/* HEADER BAR */}
+      <header
+        className="fixed top-0 left-0 right-0 flex items-center justify-between"
         style={{
-          top: 18,
-          left: 32,
           zIndex: 50,
-          ...fontScript,
-          fontWeight: 400,
-          fontSize: 38,
-          lineHeight: 1,
-          letterSpacing: "0.005em",
-          color: wordmarkColor,
-          gap: 4,
-          transition: "color 0.1s linear",
+          padding: "0 32px",
+          height: 64,
+          transition: "background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease",
+          background: scrolled ? "rgba(10, 10, 10, 0.55)" : "transparent",
+          backdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(240, 235, 224, 0.07)" : "1px solid transparent",
         }}
-        onClick={() => goTo("home")}
       >
-        <span>Casey B. Nelson</span>
-        <sup
+        {/* TOP-LEFT: signature wordmark */}
+        <div
+          className="cursor-pointer inline-flex items-start"
           style={{
-            ...fontSerif,
-            fontStyle: "italic",
+            ...fontScript,
             fontWeight: 400,
-            fontSize: 11,
-            marginTop: 8,
-            color: "#3DCAB8",
-            letterSpacing: 0,
+            fontSize: 38,
+            lineHeight: 1,
+            letterSpacing: "0.005em",
+            color: wordmarkColor,
+            gap: 4,
+            transition: "color 0.1s linear",
           }}
+          onClick={() => goTo("home")}
         >
-          ©
-        </sup>
-      </div>
-
-      {/* TOP-RIGHT: nav */}
-      <nav
-        className="fixed flex"
-        style={{
-          top: 28,
-          right: 32,
-          zIndex: 50,
-          gap: 28,
-          mixBlendMode: "difference",
-        }}
-      >
-        {[
-          { id: "home", label: "Index" },
-          { id: "vendors", label: "Vendors" },
-          { id: "agencies", label: "Agencies" },
-        ].map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => goTo(item.id)}
-            className="cursor-pointer"
+          <span>Casey B. Nelson</span>
+          <sup
             style={{
-              background: "transparent",
-              border: "none",
-              padding: 0,
-              ...fontDisplay,
-              fontWeight: 500,
-              fontSize: 14,
-              letterSpacing: "0.01em",
-              color: activeView === item.id ? "#3DCAB8" : "#fff",
-              transition: "color 0.2s",
+              ...fontSerif,
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: 11,
+              marginTop: 8,
+              color: "#3DCAB8",
+              letterSpacing: 0,
             }}
           >
-            {item.label}
-            {activeView === item.id && (
-              <span
-                className="inline-block"
-                style={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  background: "#3DCAB8",
-                  marginLeft: 6,
-                  transform: "translateY(-2px)",
-                }}
-              />
-            )}
-          </button>
-        ))}
-      </nav>
+            ©
+          </sup>
+        </div>
+
+        {/* TOP-RIGHT: nav */}
+        <nav className="flex" style={{ gap: 28 }}>
+          {[
+            { id: "home", label: "Index" },
+            { id: "vendors", label: "Vendors" },
+            { id: "agencies", label: "Agencies" },
+          ].map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => goTo(item.id)}
+              className="cursor-pointer"
+              style={{
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                ...fontDisplay,
+                fontWeight: 500,
+                fontSize: 14,
+                letterSpacing: "0.01em",
+                color: activeView === item.id ? "#3DCAB8" : "rgba(240, 235, 224, 0.85)",
+                transition: "color 0.2s",
+              }}
+            >
+              {item.label}
+              {activeView === item.id && (
+                <span
+                  className="inline-block"
+                  style={{
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    background: "#3DCAB8",
+                    marginLeft: 6,
+                    transform: "translateY(-2px)",
+                  }}
+                />
+              )}
+            </button>
+          ))}
+        </nav>
+      </header>
 
       {/* MAIN */}
       <main
