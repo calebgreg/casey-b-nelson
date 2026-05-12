@@ -340,8 +340,8 @@ export default function Home() {
             maxWidth: 620,
             ...fontDisplay,
             fontWeight: 400,
-            fontSize: "clamp(17px, 1.4vw, 21px)",
-            lineHeight: 1.5,
+            fontSize: "clamp(16px, 1.4vw, 21px)",
+            lineHeight: 1.55,
             color: "rgba(240, 235, 224, 0.78)",
           }}
         >
@@ -456,8 +456,8 @@ export default function Home() {
               onMouseLeave={() => setHoveredVendor(null)}
               className="grid cursor-pointer"
               style={{
-                gridTemplateColumns: "60px 1fr auto auto",
-                gap: "clamp(20px, 4vw, 60px)",
+                gridTemplateColumns: "40px 1fr auto",
+                gap: "clamp(10px, 3vw, 60px)",
                 padding: "clamp(22px, 2.5vw, 32px) 0",
                 borderBottom: "1px solid rgba(240, 235, 224, 0.12)",
                 alignItems: "baseline",
@@ -481,7 +481,7 @@ export default function Home() {
                 style={{
                   ...fontDisplay,
                   fontWeight: 700,
-                  fontSize: "clamp(28px, 3.6vw, 52px)",
+                  fontSize: "clamp(22px, 3.6vw, 52px)",
                   lineHeight: 1,
                   letterSpacing: "-0.025em",
                   color: "#F0EBE0",
@@ -505,6 +505,7 @@ export default function Home() {
                 )}
               </div>
               <div
+                className="hidden sm:block"
                 style={{
                   ...fontDisplay,
                   fontWeight: 400,
@@ -516,14 +517,14 @@ export default function Home() {
                 {v.category}
               </div>
               <div
-                className="text-right"
+                className="text-right hidden xs:block"
                 style={{
                   ...fontDisplay,
                   fontWeight: 400,
                   fontSize: 13,
                   color: "#6B6760",
                   letterSpacing: "0.04em",
-                  minWidth: 50,
+                  minWidth: 44,
                 }}
               >
                 {v.since}
@@ -872,7 +873,7 @@ export default function Home() {
   );
 
   const VendorsView = (
-    <section style={{ padding: "clamp(60px, 8vw, 120px) 0" }}>
+    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button
         type="button"
         onClick={() => goTo("home")}
@@ -1025,7 +1026,7 @@ export default function Home() {
   );
 
   const AgenciesView = (
-    <section style={{ padding: "clamp(60px, 8vw, 120px) 0" }}>
+    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button
         type="button"
         onClick={() => goTo("home")}
@@ -1186,8 +1187,8 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 flex items-center justify-between"
         style={{
           zIndex: 50,
-          padding: "0 32px",
-          height: 64,
+          padding: "0 clamp(16px, 4vw, 32px)",
+          height: 60,
           transition: "background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease",
           background: scrolled ? "rgba(10, 10, 10, 0.55)" : "transparent",
           backdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none",
@@ -1201,7 +1202,7 @@ export default function Home() {
           style={{
             ...fontScript,
             fontWeight: 400,
-            fontSize: 38,
+            fontSize: "clamp(26px, 5vw, 38px)",
             lineHeight: 1,
             letterSpacing: "0.005em",
             color: wordmarkColor,
@@ -1227,7 +1228,7 @@ export default function Home() {
         </div>
 
         {/* TOP-RIGHT: nav */}
-        <nav className="flex" style={{ gap: 28 }}>
+        <nav className="flex" style={{ gap: "clamp(16px, 3vw, 28px)" }}>
           {[
             { id: "home", label: "Index" },
             { id: "vendors", label: "Vendors" },
@@ -1244,10 +1245,11 @@ export default function Home() {
                 padding: 0,
                 ...fontDisplay,
                 fontWeight: 500,
-                fontSize: 14,
+                fontSize: "clamp(12px, 2.5vw, 14px)",
                 letterSpacing: "0.01em",
                 color: activeView === item.id ? "#3DCAB8" : "rgba(240, 235, 224, 0.85)",
                 transition: "color 0.2s",
+                whiteSpace: "nowrap",
               }}
             >
               {item.label}
@@ -1273,7 +1275,7 @@ export default function Home() {
       <main
         className="mx-auto"
         style={{
-          padding: "clamp(80px, 10vh, 110px) clamp(28px, 5vw, 80px) 0 clamp(28px, 5vw, 80px)",
+          padding: "60px clamp(20px, 5vw, 80px) 0 clamp(20px, 5vw, 80px)",
           maxWidth: 1680,
         }}
       >
@@ -1286,7 +1288,7 @@ export default function Home() {
       <footer
         className="mx-auto"
         style={{
-          padding: "clamp(60px, 8vw, 100px) clamp(28px, 5vw, 80px) clamp(40px, 4vw, 60px) clamp(28px, 5vw, 80px)",
+          padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) clamp(40px, 4vw, 60px) clamp(20px, 5vw, 80px)",
           maxWidth: 1680,
           borderTop: "1px solid rgba(240, 235, 224, 0.12)",
           marginTop: "clamp(80px, 12vw, 140px)",
