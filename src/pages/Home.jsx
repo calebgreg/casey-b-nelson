@@ -322,7 +322,7 @@ export default function Home() {
             style={{
               ...fontDisplay,
               fontWeight: 900,
-              fontSize: "clamp(72px, 14vw, 240px)",
+              fontSize: "clamp(36px, 10vw, 240px)",
               lineHeight: 0.88,
               letterSpacing: "-0.045em",
               margin: 0,
