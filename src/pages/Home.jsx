@@ -558,7 +558,7 @@ export default function Home() {
                 maxWidth: 540,
               }}
             >
-              The Vouched —
+              Case Pod —
             </div>
             <div
               style={{
