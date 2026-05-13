@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Mic } from "lucide-react";
+import VendorIntroDrawer from "@/components/VendorIntroDrawer";
 
 export default function Home() {
   const [activeView, setActiveView] = useState("home");
@@ -7,6 +8,7 @@ export default function Home() {
   const [agencyForm, setAgencyForm] = useState({ agency: "", problem: "", submitted: false });
   const [briefSignup, setBriefSignup] = useState({ email: "", submitted: false });
   const [hoveredVendor, setHoveredVendor] = useState(null);
+  const [selectedVendor, setSelectedVendor] = useState(null);
   const [channel, setChannel] = useState("email");
   const [wordmarkColor, setWordmarkColor] = useState("#ffffff");
   const [scrolled, setScrolled] = useState(false);
@@ -403,7 +405,7 @@ export default function Home() {
 
         <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)" }}>
           {vendors.map((v, i) => (
-            <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)} onClick={() => goTo("agencies")}
+            <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)} onClick={() => setSelectedVendor(v)}
               className="grid cursor-pointer"
               style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "baseline", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1 }}>
               <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, color: "#6B6760", letterSpacing: "0.04em" }}>{String(i + 1).padStart(2, "0")}</div>
@@ -619,6 +621,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "#0A0A0A", color: "#F0EBE0", ...fontDisplay }}>
+      {selectedVendor && <VendorIntroDrawer vendor={selectedVendor} onClose={() => setSelectedVendor(null)} />}
       {/* HEADER — your version with glass scroll + color-cycling wordmark */}
       <header className="fixed top-0 left-0 right-0 flex items-center justify-between"
         style={{ zIndex: 50, padding: "0 clamp(16px, 4vw, 32px)", height: 60, transition: "background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease", background: scrolled ? "rgba(10, 10, 10, 0.55)" : "transparent", backdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none", WebkitBackdropFilter: scrolled ? "blur(18px) saturate(140%)" : "none", borderBottom: scrolled ? "1px solid rgba(240, 235, 224, 0.07)" : "1px solid transparent" }}>
