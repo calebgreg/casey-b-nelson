@@ -255,7 +255,7 @@ export default function Home() {
 
       {/* THE PRODUCT */}
       <section style={{ padding: "clamp(100px, 14vw, 200px) 0 clamp(80px, 10vw, 140px) 0" }}>
-        <SectionLabel>The product.</SectionLabel>
+        <SectionLabel>The offer.</SectionLabel>
 
         <div style={{ ...fontDisplay, fontWeight: 500, fontSize: "clamp(24px, 2.8vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", maxWidth: 980, color: "#F0EBE0", marginBottom: "clamp(48px, 6vw, 80px)" }}>
           Cold outreach is collapsing. Reply rates in the channel have fallen every quarter. Retain me, and your next conversation with a principal happens <Bracket>three ways</Bracket>.
