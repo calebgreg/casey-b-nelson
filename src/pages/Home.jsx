@@ -627,7 +627,7 @@ export default function Home() {
           <sup style={{ ...fontSerif, fontStyle: "italic", fontWeight: 400, fontSize: 11, marginTop: 8, color: "#3DCAB8", letterSpacing: 0 }}>©</sup>
         </div>
         <nav className="flex" style={{ gap: "clamp(16px, 3vw, 28px)" }}>
-          {[{ id: "home", label: "Index" }, { id: "vendors", label: "Vendors" }, { id: "agencies", label: "Agencies" }].map((item) => (
+          {[{ id: "vendors", label: "Vendors" }, { id: "agencies", label: "Agencies" }].map((item) => (
             <button key={item.id} type="button" onClick={() => goTo(item.id)} className="cursor-pointer"
               style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === item.id ? "#3DCAB8" : "rgba(240, 235, 224, 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
               {item.label}
