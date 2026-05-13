@@ -259,7 +259,10 @@ export default function Home() {
       <section style={{ padding: "clamp(100px, 14vw, 200px) 0 clamp(80px, 10vw, 140px) 0" }}>
         <SectionLabel>The offer.</SectionLabel>
 
-        <div style={{ ...fontDisplay, fontWeight: 500, fontSize: "clamp(24px, 2.8vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", maxWidth: 980, color: "#F0EBE0", marginBottom: "clamp(48px, 6vw, 80px)" }}>
+        <div style={{ ...fontDisplay, fontWeight: 600, fontSize: "clamp(24px, 2.8vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", maxWidth: 980, color: "#F0EBE0", marginBottom: "clamp(24px, 3vw, 40px)" }}>
+          A small, working list of vendors I'd actually <Bracket>introduce to a friend</Bracket>. Agencies use it to skip the cold pitch carousel. Vendors retain me to get put in front of buyers who <Bracket>pick up the phone</Bracket>. The introduction is the product. Everything else is logistics.
+        </div>
+        <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(16px, 1.4vw, 20px)", lineHeight: 1.55, maxWidth: 820, color: "rgba(240, 235, 224, 0.55)", marginBottom: "clamp(48px, 6vw, 80px)" }}>
           Cold outreach is collapsing. Reply rates in the channel have fallen every quarter. Retain me, and your next conversation with a principal happens <Bracket>three ways</Bracket>.
         </div>
 
