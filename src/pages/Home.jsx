@@ -234,7 +234,7 @@ export default function Home() {
 
   // ---------------- VIEWS ----------------
 
-  const HomeView = (
+  const HomeView = () => (
     <>
       {/* HERO */}
       <section className="relative flex flex-col justify-between" style={{ minHeight: "calc(100vh - 80px)", paddingTop: "clamp(60px, 12vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}>
@@ -507,7 +507,7 @@ export default function Home() {
     </>
   );
 
-  const VendorsView = (
+  const VendorsView = () => (
     <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={() => goTo("home")} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "#6B6760", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
       <SectionLabel>For vendors.</SectionLabel>
@@ -544,7 +544,7 @@ export default function Home() {
     </section>
   );
 
-  const AgenciesView = (
+  const AgenciesView = () => (
     <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={() => goTo("home")} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "#6B6760", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
       <SectionLabel>For agencies.</SectionLabel>
@@ -639,9 +639,9 @@ export default function Home() {
 
       {/* MAIN */}
       <main className="mx-auto" style={{ padding: "60px clamp(20px, 5vw, 80px) 0 clamp(20px, 5vw, 80px)", maxWidth: 1680 }}>
-        {activeView === "home" && HomeView}
-        {activeView === "vendors" && VendorsView}
-        {activeView === "agencies" && AgenciesView}
+        {activeView === "home" && <HomeView />}
+        {activeView === "vendors" && <VendorsView />}
+        {activeView === "agencies" && <AgenciesView />}
       </main>
 
       {/* FOOTER */}
