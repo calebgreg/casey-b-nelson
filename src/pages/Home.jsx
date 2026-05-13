@@ -241,12 +241,7 @@ export default function Home() {
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ pointerEvents: "auto" }} />
 
         <div className="relative z-10 pointer-events-none">
-          <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6B6760", marginBottom: 40 }}>
-            <span className="inline-flex items-center gap-2.5">
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3DCAB8", boxShadow: "0 0 12px rgba(61, 202, 184, 0.6)" }} />
-              Open desk · Spring 2026
-            </span>
-          </div>
+
           <h1 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(36px, 10vw, 240px)", lineHeight: 0.88, letterSpacing: "-0.045em", margin: 0, color: "#F0EBE0", maxWidth: 1400 }}>
             Introductions in <Bracket>insurance</Bracket>.
           </h1>
