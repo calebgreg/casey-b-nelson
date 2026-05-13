@@ -279,12 +279,13 @@ export default function Home() {
         </div>
 
         {/* CHANNEL PANEL */}
-        <div key={channel} style={{ maxWidth: 760, margin: "0 auto", background: "#13110D", border: "1px solid rgba(240, 235, 224, 0.12)", boxShadow: "0 30px 80px rgba(0,0,0,0.6)", position: "relative", animation: "channelFade 0.35s ease-out" }}>
-          <style>{`@keyframes channelFade { from { opacity:0; transform:translateY(8px);} to { opacity:1; transform:translateY(0);} }`}</style>
-          <div style={{ position: "absolute", top: -1, left: -1, width: 60, height: 1, background: "#3DCAB8" }} />
-          <div style={{ position: "absolute", top: -1, left: -1, width: 1, height: 60, background: "#3DCAB8" }} />
+        <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
+          {["email", "text", "stage"].map((id) => (
+            <div key={id} style={{ position: id === "email" ? "relative" : "absolute", top: 0, left: 0, right: 0, background: "#13110D", border: "1px solid rgba(240, 235, 224, 0.12)", boxShadow: "0 30px 80px rgba(0,0,0,0.6)", opacity: channel === id ? 1 : 0, pointerEvents: channel === id ? "auto" : "none", transition: "opacity 0.3s ease", zIndex: channel === id ? 1 : 0 }}>
+            <div style={{ position: "absolute", top: -1, left: -1, width: 60, height: 1, background: "#3DCAB8" }} />
+            <div style={{ position: "absolute", top: -1, left: -1, width: 1, height: 60, background: "#3DCAB8" }} />
 
-          {channel === "email" && (
+          {id === "email" && (
             <>
               <div style={{ padding: "clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 36px)", borderBottom: "1px solid rgba(240, 235, 224, 0.08)", display: "grid", gap: 10 }}>
                 {[
@@ -312,7 +313,7 @@ export default function Home() {
             </>
           )}
 
-          {channel === "text" && (
+          {id === "text" && (
             <div style={{ padding: "clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px)" }}>
               <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 4, paddingBottom: 24, marginBottom: 28, borderBottom: "1px solid rgba(240, 235, 224, 0.06)" }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(61, 202, 184, 0.12)", border: "1px solid rgba(61, 202, 184, 0.3)", display: "flex", justifyContent: "center", alignItems: "center", ...fontScript, fontSize: 22, color: "#3DCAB8", lineHeight: 1, paddingBottom: 4 }}>C</div>
@@ -334,7 +335,7 @@ export default function Home() {
             </div>
           )}
 
-          {channel === "stage" && (
+          {id === "stage" && (
             <div>
               <div style={{ padding: "clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 36px)", borderBottom: "1px solid rgba(240, 235, 224, 0.08)", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
                 <div>
@@ -364,6 +365,8 @@ export default function Home() {
               </div>
             </div>
           )}
+          </div>
+          ))}
         </div>
 
         {/* PROOF STATS */}
