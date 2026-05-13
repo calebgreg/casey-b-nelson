@@ -403,7 +403,7 @@ export default function Home() {
 
         <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)" }}>
           {vendors.map((v, i) => (
-            <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)}
+            <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)} onClick={() => goTo("agencies")}
               className="grid cursor-pointer"
               style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "baseline", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1 }}>
               <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, color: "#6B6760", letterSpacing: "0.04em" }}>{String(i + 1).padStart(2, "0")}</div>
