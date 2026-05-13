@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Mic } from "lucide-react";
 
 export default function Home() {
   const [activeView, setActiveView] = useState("home");
@@ -558,7 +559,7 @@ export default function Home() {
                 maxWidth: 540,
               }}
             >
-              Case Pod —
+              Case Pod <Mic size={28} style={{ display: "inline", verticalAlign: "middle", marginLeft: "0.2em" }} />
             </div>
             <div
               style={{
