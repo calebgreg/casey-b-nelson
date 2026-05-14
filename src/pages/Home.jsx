@@ -419,23 +419,20 @@ export default function Home() {
               onMouseLeave={() => setHoveredVendor(null)}
               onClick={() => setSelectedVendor(v)}
               className="grid cursor-pointer"
-              style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "center", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1, position: "relative" }}>
+              style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "center", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1 }}>
               <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, color: "#6B6760", letterSpacing: "0.04em" }}>{String(i + 1).padStart(2, "0")}</div>
-              <div className="flex items-center flex-wrap" style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(22px, 3.6vw, 52px)", lineHeight: 1, letterSpacing: "-0.025em", color: "#F0EBE0", gap: 16 }}>
-                <span>{v.name}</span>
-                {hoveredVendor === i && (
-                  <span style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(16px, 1.4vw, 22px)", fontWeight: 400, color: "#3DCAB8", letterSpacing: "normal" }}>request an intro.</span>
-                )}
-
-              </div>
-              <div className="hidden sm:flex items-center" style={{ gap: 16, justifyContent: "flex-end" }}>
+              <div className="flex items-center" style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(22px, 3.6vw, 52px)", lineHeight: 1, letterSpacing: "-0.025em", color: "#F0EBE0", gap: "clamp(12px, 2vw, 24px)" }}>
+                <span style={{ whiteSpace: "nowrap" }}>{v.name}</span>
                 {hoveredVendor === i && v.thumb && (
-                  <div style={{ width: 72, height: 46, borderRadius: 6, overflow: "hidden", border: "1px solid rgba(240,235,224,0.1)", boxShadow: "0 8px 24px rgba(0,0,0,0.6)", flexShrink: 0, opacity: 1 }}>
+                  <div style={{ width: 120, height: 74, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(240,235,224,0.1)", boxShadow: "0 12px 32px rgba(0,0,0,0.7)", flexShrink: 0 }}>
                     <img src={v.thumb} alt={v.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                   </div>
                 )}
-                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: 14, color: "rgba(240, 235, 224, 0.7)", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>{v.category}</div>
+                {hoveredVendor === i && (
+                  <span style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(14px, 1.2vw, 18px)", fontWeight: 400, color: "#3DCAB8", letterSpacing: "normal", whiteSpace: "nowrap" }}>request an intro.</span>
+                )}
               </div>
+              <div className="hidden sm:block" style={{ ...fontDisplay, fontWeight: 400, fontSize: 14, color: "rgba(240, 235, 224, 0.7)", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>{v.category}</div>
             </div>
           ))}
         </div>
