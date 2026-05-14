@@ -426,13 +426,16 @@ export default function Home() {
                 {hoveredVendor === i && (
                   <span style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(16px, 1.4vw, 22px)", fontWeight: 400, color: "#3DCAB8", letterSpacing: "normal" }}>request an intro.</span>
                 )}
+
+              </div>
+              <div className="hidden sm:flex items-center" style={{ gap: 16, justifyContent: "flex-end" }}>
                 {hoveredVendor === i && v.thumb && (
-                  <div style={{ position: "absolute", right: 80, top: "50%", transform: "translateY(-50%)", width: 160, height: 100, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(240,235,224,0.12)", boxShadow: "0 16px 48px rgba(0,0,0,0.7)", pointerEvents: "none", flexShrink: 0 }}>
+                  <div style={{ width: 72, height: 46, borderRadius: 6, overflow: "hidden", border: "1px solid rgba(240,235,224,0.1)", boxShadow: "0 8px 24px rgba(0,0,0,0.6)", flexShrink: 0, opacity: 1 }}>
                     <img src={v.thumb} alt={v.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                   </div>
                 )}
+                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: 14, color: "rgba(240, 235, 224, 0.7)", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>{v.category}</div>
               </div>
-              <div className="hidden sm:block" style={{ ...fontDisplay, fontWeight: 400, fontSize: 14, color: "rgba(240, 235, 224, 0.7)", letterSpacing: "0.02em" }}>{v.category}</div>
             </div>
           ))}
         </div>
