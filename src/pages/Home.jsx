@@ -70,9 +70,11 @@ export default function Home() {
     document.head.appendChild(link);
   }, []);
 
-  // Hero network animation
+  const activeViewRef = useRef(activeView);
+  useEffect(() => { activeViewRef.current = activeView; }, [activeView]);
+
+  // Hero network animation — runs once, persists across view changes
   useEffect(() => {
-    if (activeView !== "home") return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -104,6 +106,7 @@ export default function Home() {
     }
 
     const spawnConnection = () => {
+      if (activeViewRef.current !== "home") return;
       const a = Math.floor(Math.random() * nodes.length);
       let b = Math.floor(Math.random() * nodes.length);
       while (b === a) b = Math.floor(Math.random() * nodes.length);
@@ -113,6 +116,18 @@ export default function Home() {
 
     const cursor = cursorRef.current;
     const draw = () => {
+      // Still tick nodes so positions stay alive; skip drawing if not on home
+      if (activeViewRef.current !== "home") {
+        nodes.forEach((n) => {
+          n.x += n.vx;
+          n.y += n.vy;
+          const r = canvas.getBoundingClientRect();
+          if (n.x < 0 || n.x > r.width) n.vx *= -1;
+          if (n.y < 0 || n.y > r.height) n.vy *= -1;
+        });
+        raf = requestAnimationFrame(draw);
+        return;
+      }
       const r = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, r.width, r.height);
       nodes.forEach((n) => {
@@ -174,7 +189,7 @@ export default function Home() {
       canvas.removeEventListener("mousemove", handleMove);
       canvas.removeEventListener("mouseleave", handleLeave);
     };
-  }, [activeView]);
+  }, []);
 
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
 
