@@ -364,11 +364,23 @@ export default function Home() {
 
         {/* PROOF STATS */}
         <div className="grid" style={{ marginTop: "clamp(60px, 8vw, 100px)", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: "rgba(240, 235, 224, 0.12)", border: "1px solid rgba(240, 235, 224, 0.12)" }}>
-          {[
-            { num: "60%+", label: "Reply rate", sub: "vs 1–3% on cold outreach" },
-            { num: "400+", label: "Agency network", sub: "Personal + commercial lines, US" },
-            { num: "2–4", label: "Intros per month", sub: "Per vendor on the list" },
-          ].map((stat, i) => (
+          {({
+            email: [
+              { num: "60%+", label: "Reply rate", sub: "vs 1–3% on cold outreach" },
+              { num: "400+", label: "Agency network", sub: "Personal + commercial lines, US" },
+              { num: "2–4", label: "Intros per month", sub: "Per vendor on the list" },
+            ],
+            text: [
+              { num: "~2min", label: "Response time", sub: "When I text, they reply" },
+              { num: "400+", label: "Direct contacts", sub: "Principals, not assistants" },
+              { num: "1:1", label: "Every intro", sub: "Never a group thread" },
+            ],
+            stage: [
+              { num: "4", label: "Conferences booked", sub: "2026 calendar" },
+              { num: "~600", label: "Principals per room", sub: "Decision-makers, not staff" },
+              { num: "5", label: "Vendors named on stage", sub: "Per event, from the list" },
+            ],
+          }[channel]).map((stat, i) => (
             <div key={i} style={{ background: "#0A0A0A", padding: "clamp(28px, 3.5vw, 44px) clamp(20px, 3vw, 36px)" }}>
               <div style={{ ...fontDisplay, fontWeight: 800, fontSize: "clamp(48px, 6vw, 80px)", lineHeight: 0.95, letterSpacing: "-0.04em", color: "#F0EBE0", marginBottom: 14 }}>{stat.num}</div>
               <div style={{ ...fontDisplay, fontWeight: 600, fontSize: "clamp(15px, 1.2vw, 17px)", color: "#F0EBE0", marginBottom: 6, letterSpacing: "-0.01em" }}>{stat.label}</div>
