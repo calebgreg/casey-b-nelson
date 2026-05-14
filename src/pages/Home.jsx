@@ -662,7 +662,7 @@ export default function Home() {
           <sup style={{ ...fontSerif, fontStyle: "italic", fontWeight: 400, fontSize: 11, marginTop: 8, color: "#3DCAB8", letterSpacing: 0 }}>©</sup>
         </div>
         <nav className="flex" style={{ gap: "clamp(16px, 3vw, 28px)" }}>
-          {[{ id: "vendors", label: "Vendors" }, { id: "agencies", label: "Agencies" }].map((item) => (
+          {[{ id: "vendors", label: "Vendors" }, { id: "agencies", label: "Agencies" }, { id: "events", label: "Events" }].map((item) => (
             <button key={item.id} type="button" onClick={() => goTo(item.id)} className="cursor-pointer"
               style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === item.id ? "#3DCAB8" : "rgba(240, 235, 224, 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
               {item.label}
@@ -689,7 +689,7 @@ export default function Home() {
             { title: "Contact.", lines: [<>Casey B. Nelson</>, <>Private list, by introduction</>, <a href="mailto:casey@caseybnelson.com" style={{ color: "#3DCAB8", textDecoration: "none" }}>casey@caseybnelson.com</a>] },
             { title: "Listen.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>Apple Podcasts ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Spotify ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>YouTube ↗</a>] },
             { title: "Follow.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>LinkedIn ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Twitter ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Newsletter ↗</a>] },
-            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("vendors")} className="cursor-pointer">For vendors</span>, <span onClick={() => goTo("agencies")} className="cursor-pointer">For agencies</span>] },
+            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("vendors")} className="cursor-pointer">For vendors</span>, <span onClick={() => goTo("agencies")} className="cursor-pointer">For agencies</span>, <a href="/events" style={{ color: "inherit", textDecoration: "none" }}>Events</a>] },
           ].map((col) => (
             <div key={col.title}>
               <div style={{ fontWeight: 600, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6B6760", marginBottom: 14 }}>{col.title}</div>
