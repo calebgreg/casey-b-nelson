@@ -662,13 +662,17 @@ export default function Home() {
           <sup style={{ ...fontSerif, fontStyle: "italic", fontWeight: 400, fontSize: 11, marginTop: 8, color: "#3DCAB8", letterSpacing: 0 }}>©</sup>
         </div>
         <nav className="flex" style={{ gap: "clamp(16px, 3vw, 28px)" }}>
-          {[{ id: "vendors", label: "Vendors" }, { id: "agencies", label: "Agencies" }, { id: "events", label: "Events" }].map((item) => (
+          {[
+            { id: "vendors", label: "Vendors" },
+            { id: "agencies", label: "Agencies" },
+          ].map((item) => (
             <button key={item.id} type="button" onClick={() => goTo(item.id)} className="cursor-pointer"
               style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === item.id ? "#3DCAB8" : "rgba(240, 235, 224, 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
               {item.label}
               {activeView === item.id && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "#3DCAB8", marginLeft: 6, transform: "translateY(-2px)" }} />}
             </button>
           ))}
+          <a href="/events" style={{ ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: "rgba(240, 235, 224, 0.85)", textDecoration: "none", transition: "color 0.2s" }} onMouseEnter={(e) => e.target.style.color = "#3DCAB8"} onMouseLeave={(e) => e.target.style.color = "rgba(240, 235, 224, 0.85)"}>Events</a>
         </nav>
       </header>
 
