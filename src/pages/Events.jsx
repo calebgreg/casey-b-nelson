@@ -12,7 +12,9 @@ export default function Events({ onBack }) {
   };
 
   return (
-    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
+    <div className="relative min-h-screen" style={{ backgroundColor: "#0A0A0A", color: "#F0EBE0", ...fontDisplay }}>
+      <main className="mx-auto" style={{ padding: "60px clamp(20px, 5vw, 80px) 0 clamp(20px, 5vw, 80px)", maxWidth: 1680 }}>
+      <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={onBack} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "#6B6760", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
 
       <div style={{ marginBottom: "clamp(48px, 6vw, 72px)" }}>
@@ -79,5 +81,7 @@ export default function Events({ onBack }) {
         </div>
       )}
     </section>
+      </main>
+    </div>
   );
 }
