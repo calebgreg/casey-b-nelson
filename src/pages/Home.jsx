@@ -412,22 +412,24 @@ export default function Home() {
           </span>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)", position: "relative" }}
-          onMouseMove={(e) => setThumbPos({ x: e.clientX, y: e.clientY })}>
-          {hoveredVendor !== null && vendors[hoveredVendor]?.thumb && (
-            <div style={{ position: "fixed", left: thumbPos.x + 28, top: thumbPos.y + 16, zIndex: 200, pointerEvents: "none", width: 180, height: 116, overflow: "hidden", border: "1px solid rgba(240,235,224,0.1)", boxShadow: "0 24px 64px rgba(0,0,0,0.8)", transition: "left 0.08s ease, top 0.08s ease" }}>
-              <img src={vendors[hoveredVendor].thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-          )}
+        <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)", position: "relative" }}>
           {vendors.map((v, i) => (
-            <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)} onClick={() => setSelectedVendor(v)}
+            <div key={v.name}
+              onMouseEnter={() => setHoveredVendor(i)}
+              onMouseLeave={() => setHoveredVendor(null)}
+              onClick={() => setSelectedVendor(v)}
               className="grid cursor-pointer"
-              style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "baseline", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1 }}>
+              style={{ gridTemplateColumns: "40px 1fr auto", gap: "clamp(10px, 3vw, 60px)", padding: "clamp(22px, 2.5vw, 32px) 0", borderBottom: "1px solid rgba(240, 235, 224, 0.12)", alignItems: "center", transition: "opacity 0.3s", opacity: hoveredVendor !== null && hoveredVendor !== i ? 0.35 : 1, position: "relative" }}>
               <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, color: "#6B6760", letterSpacing: "0.04em" }}>{String(i + 1).padStart(2, "0")}</div>
-              <div className="flex items-baseline flex-wrap" style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(22px, 3.6vw, 52px)", lineHeight: 1, letterSpacing: "-0.025em", color: "#F0EBE0", gap: 16 }}>
+              <div className="flex items-center flex-wrap" style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(22px, 3.6vw, 52px)", lineHeight: 1, letterSpacing: "-0.025em", color: "#F0EBE0", gap: 16 }}>
                 <span>{v.name}</span>
                 {hoveredVendor === i && (
                   <span style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(16px, 1.4vw, 22px)", fontWeight: 400, color: "#3DCAB8", letterSpacing: "normal" }}>request an intro.</span>
+                )}
+                {hoveredVendor === i && v.thumb && (
+                  <div style={{ position: "absolute", right: 80, top: "50%", transform: "translateY(-50%)", width: 160, height: 100, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(240,235,224,0.12)", boxShadow: "0 16px 48px rgba(0,0,0,0.7)", pointerEvents: "none", flexShrink: 0 }}>
+                    <img src={v.thumb} alt={v.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  </div>
                 )}
               </div>
               <div className="hidden sm:block" style={{ ...fontDisplay, fontWeight: 400, fontSize: 14, color: "rgba(240, 235, 224, 0.7)", letterSpacing: "0.02em" }}>{v.category}</div>
