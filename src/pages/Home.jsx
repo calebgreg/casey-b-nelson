@@ -220,18 +220,9 @@ export default function Home() {
   );
 
   const channelTabs = [
-    {
-      id: "email", label: "The email", sub: "Written intro",
-      icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="5" width="18" height="14" /><path d="M3 7l9 6 9-6" /></svg>,
-    },
-    {
-      id: "text", label: "The text", sub: "Direct handoff",
-      icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="6" y="3" width="12" height="18" rx="2" /><line x1="11" y1="18" x2="13" y2="18" /></svg>,
-    },
-    {
-      id: "stage", label: "The stage", sub: "Public endorsement",
-      icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 8h16v9H4z" /><path d="M2 17h20" /><path d="M9 8V5h6v3" /><circle cx="12" cy="12.5" r="1.2" fill="currentColor" /></svg>,
-    },
+    { id: "email", label: "The email", sub: "Written intro", num: "01" },
+    { id: "text",  label: "The text",  sub: "Direct handoff", num: "02" },
+    { id: "stage", label: "The stage", sub: "Public endorsement", num: "03" },
   ];
 
   // ---------------- VIEWS ----------------
@@ -267,15 +258,15 @@ export default function Home() {
         </div>
 
         {/* CHANNEL TOGGLE */}
-        <div className="flex" style={{ justifyContent: "center", gap: 1, background: "rgba(240, 235, 224, 0.12)", border: "1px solid rgba(240, 235, 224, 0.12)", maxWidth: 760, margin: "0 auto clamp(20px, 2.5vw, 32px) auto" }}>
+        <div className="flex" style={{ maxWidth: 760, margin: "0 auto clamp(20px, 2.5vw, 32px) auto", borderBottom: "1px solid rgba(240, 235, 224, 0.1)" }}>
           {channelTabs.map((c) => {
             const isActive = channel === c.id;
             return (
-              <button key={c.id} type="button" onClick={() => setChannel(c.id)} className="cursor-pointer flex-1 flex flex-col items-center"
-                style={{ background: isActive ? "#13110D" : "#0A0A0A", border: "none", padding: "clamp(16px, 2.2vw, 28px) clamp(10px, 2vw, 24px)", color: isActive ? "#3DCAB8" : "rgba(240, 235, 224, 0.45)", transition: "all 0.25s ease", gap: 10, borderTop: isActive ? "1px solid #3DCAB8" : "1px solid transparent" }}>
-                {c.icon}
-                <div style={{ ...fontDisplay, fontWeight: 600, fontSize: "clamp(12px, 1.2vw, 16px)", letterSpacing: "-0.01em" }}>{c.label}</div>
-                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: 11, letterSpacing: "0.04em", textTransform: "uppercase", color: isActive ? "rgba(61, 202, 184, 0.6)" : "rgba(240, 235, 224, 0.35)" }}>{c.sub}</div>
+              <button key={c.id} type="button" onClick={() => setChannel(c.id)} className="cursor-pointer flex-1 text-left"
+                style={{ background: "transparent", border: "none", borderBottom: isActive ? "1px solid #3DCAB8" : "1px solid transparent", marginBottom: -1, padding: "clamp(14px, 2vw, 22px) clamp(12px, 2vw, 20px)", transition: "all 0.22s ease" }}>
+                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: isActive ? "#3DCAB8" : "rgba(240, 235, 224, 0.28)", marginBottom: 8, transition: "color 0.22s" }}>{c.num}</div>
+                <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(14px, 1.4vw, 19px)", letterSpacing: "-0.02em", color: isActive ? "#F0EBE0" : "rgba(240, 235, 224, 0.42)", lineHeight: 1.1, marginBottom: 5, transition: "color 0.22s" }}>{c.label}</div>
+                <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(11px, 1vw, 13px)", color: isActive ? "rgba(61, 202, 184, 0.7)" : "rgba(240, 235, 224, 0.22)", transition: "color 0.22s" }}>{c.sub}</div>
               </button>
             );
           })}
