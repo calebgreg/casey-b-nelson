@@ -264,7 +264,6 @@ export default function Home() {
             return (
               <button key={c.id} type="button" onClick={() => setChannel(c.id)} className="cursor-pointer flex-1 text-left"
                 style={{ background: "transparent", border: "none", borderBottom: isActive ? "1px solid #3DCAB8" : "1px solid transparent", marginBottom: -1, padding: "clamp(14px, 2vw, 22px) clamp(12px, 2vw, 20px)", transition: "all 0.22s ease" }}>
-                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: isActive ? "#3DCAB8" : "rgba(240, 235, 224, 0.28)", marginBottom: 8, transition: "color 0.22s" }}>{c.num}</div>
                 <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(14px, 1.4vw, 19px)", letterSpacing: "-0.02em", color: isActive ? "#F0EBE0" : "rgba(240, 235, 224, 0.42)", lineHeight: 1.1, marginBottom: 5, transition: "color 0.22s" }}>{c.label}</div>
                 <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(11px, 1vw, 13px)", color: isActive ? "rgba(61, 202, 184, 0.7)" : "rgba(240, 235, 224, 0.22)", transition: "color 0.22s" }}>{c.sub}</div>
               </button>
