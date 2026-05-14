@@ -8,6 +8,7 @@ export default function Home() {
   const [agencyForm, setAgencyForm] = useState({ agency: "", problem: "", submitted: false });
   const [briefSignup, setBriefSignup] = useState({ email: "", submitted: false });
   const [hoveredVendor, setHoveredVendor] = useState(null);
+  const [thumbPos, setThumbPos] = useState({ x: 0, y: 0 });
   const [selectedVendor, setSelectedVendor] = useState(null);
   const [channel, setChannel] = useState("email");
   const [wordmarkColor, setWordmarkColor] = useState("#ffffff");
@@ -178,18 +179,18 @@ export default function Home() {
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
 
   const vendors = [
-    { name: "Submissions Co.", category: "Submissions", since: "03·26" },
-    { name: "AgencyBeam", category: "AMS", since: "01·26" },
-    { name: "Hearth Compare", category: "Personal Lines", since: "03·26" },
-    { name: "BenefitsBeam", category: "Benefits", since: "02·26" },
-    { name: "ClaimsFlow", category: "Claims", since: "03·26" },
-    { name: "Verdant Loss", category: "Loss Control", since: "04·26" },
-    { name: "Certify Layer", category: "Certificates", since: "12·25" },
-    { name: "Threadwork", category: "Marketing", since: "04·26" },
-    { name: "Ledger CRM", category: "CRM", since: "01·26" },
-    { name: "QuoteForge", category: "Raters", since: "02·26" },
-    { name: "Marketwise", category: "Data", since: "02·26" },
-    { name: "Northsight", category: "Data", since: "04·26" },
+    { name: "Submissions Co.", category: "Submissions", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/1a13e9ac9_generated_image.png" },
+    { name: "AgencyBeam", category: "AMS", since: "01·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/8800b4fd6_generated_image.png" },
+    { name: "Hearth Compare", category: "Personal Lines", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/de2946259_generated_image.png" },
+    { name: "BenefitsBeam", category: "Benefits", since: "02·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/ea9e8aa0c_generated_image.png" },
+    { name: "ClaimsFlow", category: "Claims", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/22b20e4f6_generated_image.png" },
+    { name: "Verdant Loss", category: "Loss Control", since: "04·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/71ec5eec7_generated_image.png" },
+    { name: "Certify Layer", category: "Certificates", since: "12·25", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/0724032f9_generated_image.png" },
+    { name: "Threadwork", category: "Marketing", since: "04·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/896f542e5_generated_image.png" },
+    { name: "Ledger CRM", category: "CRM", since: "01·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/771d9fa83_generated_image.png" },
+    { name: "QuoteForge", category: "Raters", since: "02·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/0cd2fe5aa_generated_image.png" },
+    { name: "Marketwise", category: "Data", since: "02·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/cbdd4bebe_generated_image.png" },
+    { name: "Northsight", category: "Data", since: "04·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/0092fe2ab_generated_image.png" },
   ];
 
   const submitVendorForm = (e) => { e.preventDefault(); setVendorForm({ ...vendorForm, submitted: true }); };
@@ -411,7 +412,13 @@ export default function Home() {
           </span>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)" }}>
+        <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)", position: "relative" }}
+          onMouseMove={(e) => setThumbPos({ x: e.clientX, y: e.clientY })}>
+          {hoveredVendor !== null && vendors[hoveredVendor]?.thumb && (
+            <div style={{ position: "fixed", left: thumbPos.x + 20, top: thumbPos.y - 60, zIndex: 200, pointerEvents: "none", width: 200, height: 130, overflow: "hidden", border: "1px solid rgba(240,235,224,0.12)", boxShadow: "0 20px 60px rgba(0,0,0,0.7)", opacity: 1, transition: "opacity 0.2s ease" }}>
+              <img src={vendors[hoveredVendor].thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
+          )}
           {vendors.map((v, i) => (
             <div key={v.name} onMouseEnter={() => setHoveredVendor(i)} onMouseLeave={() => setHoveredVendor(null)} onClick={() => setSelectedVendor(v)}
               className="grid cursor-pointer"
