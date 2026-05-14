@@ -415,7 +415,7 @@ export default function Home() {
         <div style={{ borderTop: "1px solid rgba(240, 235, 224, 0.12)", position: "relative" }}
           onMouseMove={(e) => setThumbPos({ x: e.clientX, y: e.clientY })}>
           {hoveredVendor !== null && vendors[hoveredVendor]?.thumb && (
-            <div style={{ position: "fixed", left: thumbPos.x + 20, top: thumbPos.y - 60, zIndex: 200, pointerEvents: "none", width: 200, height: 130, overflow: "hidden", border: "1px solid rgba(240,235,224,0.12)", boxShadow: "0 20px 60px rgba(0,0,0,0.7)", opacity: 1, transition: "opacity 0.2s ease" }}>
+            <div style={{ position: "fixed", left: thumbPos.x + 28, top: thumbPos.y + 16, zIndex: 200, pointerEvents: "none", width: 180, height: 116, overflow: "hidden", border: "1px solid rgba(240,235,224,0.1)", boxShadow: "0 24px 64px rgba(0,0,0,0.8)", transition: "left 0.08s ease, top 0.08s ease" }}>
               <img src={vendors[hoveredVendor].thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
           )}
