@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Mic } from "lucide-react";
 import VendorIntroDrawer from "@/components/VendorIntroDrawer";
 import SiteHeader from "@/components/SiteHeader";
+import EventsView from "@/components/EventsView";
 
-export default function Home() {
-  const [activeView, setActiveView] = useState("home");
+export default function Home({ initialView = "home" }) {
+  const [activeView, setActiveView] = useState(initialView);
   const [vendorForm, setVendorForm] = useState({ company: "", category: "", why: "", submitted: false });
   const [agencyForm, setAgencyForm] = useState({ agency: "", problem: "", submitted: false });
   const [briefSignup, setBriefSignup] = useState({ email: "", submitted: false });
@@ -621,6 +622,7 @@ export default function Home() {
         {activeView === "home" && <HomeView />}
         {activeView === "vendors" && <VendorsView />}
         {activeView === "agencies" && <AgenciesView />}
+        {activeView === "events" && <EventsView onBack={() => goTo("home")} />}
       </main>
 
       {/* FOOTER */}
@@ -633,7 +635,7 @@ export default function Home() {
             { title: "Contact.", lines: [<>Casey B. Nelson</>, <>Private list, by introduction</>, <a href="mailto:casey@caseybnelson.com" style={{ color: "var(--accent)", textDecoration: "none" }}>casey@caseybnelson.com</a>] },
             { title: "Listen.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>Apple Podcasts ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Spotify ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>YouTube ↗</a>] },
             { title: "Follow.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>LinkedIn ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Twitter ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Newsletter ↗</a>] },
-            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("vendors")} className="cursor-pointer">For vendors</span>, <span onClick={() => goTo("agencies")} className="cursor-pointer">For agencies</span>, <a href="/events" style={{ color: "inherit", textDecoration: "none" }}>Events</a>] },
+            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("vendors")} className="cursor-pointer">For vendors</span>, <span onClick={() => goTo("agencies")} className="cursor-pointer">For agencies</span>, <span onClick={() => goTo("events")} className="cursor-pointer">Events</span>] },
           ].map((col) => (
             <div key={col.title}>
               <div style={{ fontWeight: 600, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 14 }}>{col.title}</div>

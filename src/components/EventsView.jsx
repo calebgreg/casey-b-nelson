@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import SiteHeader from "@/components/SiteHeader";
 
-export default function Events({ onBack }) {
+export default function EventsView({ onBack }) {
   const [form, setForm] = useState({ org: "", event: "", date: "", audience: "", note: "", submitted: false });
 
   const fontDisplay = { fontFamily: '"Inter Tight", system-ui, sans-serif' };
@@ -13,10 +12,7 @@ export default function Events({ onBack }) {
   };
 
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: "var(--site-bg)", color: "var(--ink)", ...fontDisplay }}>
-      <SiteHeader />
-      <main className="mx-auto" style={{ padding: "60px clamp(20px, 5vw, 80px) 0 clamp(20px, 5vw, 80px)", maxWidth: 1680 }}>
-      <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
+    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={onBack} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "var(--muted)", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
 
       <div style={{ marginBottom: "clamp(48px, 6vw, 72px)" }}>
@@ -83,7 +79,5 @@ export default function Events({ onBack }) {
         </div>
       )}
     </section>
-      </main>
-    </div>
   );
 }

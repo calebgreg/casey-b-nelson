@@ -87,7 +87,11 @@ export default function SiteHeader({ activeView = "", onNav }) {
             {activeView === item.id && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", marginLeft: 6, transform: "translateY(-2px)" }} />}
           </button>
         ))}
-        <a href="/events" style={{ ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: window.location.pathname === "/events" ? "var(--accent)" : "rgba(var(--ink-rgb), 0.85)", textDecoration: "none", transition: "color 0.2s" }}>Events</a>
+        <button type="button" onClick={() => nav("events")} className="cursor-pointer"
+          style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === "events" ? "var(--accent)" : "rgba(var(--ink-rgb), 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
+          Events
+          {activeView === "events" && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", marginLeft: 6, transform: "translateY(-2px)" }} />}
+        </button>
         <button type="button" onClick={toggleTheme} className="cursor-pointer" style={{ background: "transparent", border: "none", padding: 0, color: "rgba(var(--ink-rgb), 0.85)", display: "inline-flex", alignItems: "center" }} aria-label="Toggle theme">
           {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
         </button>

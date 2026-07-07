@@ -7,7 +7,6 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import { ThemeProvider } from '@/lib/ThemeContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from './pages/Home';
-import Events from './pages/Events';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -37,7 +36,7 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/events" element={<Events onBack={() => { window.scrollTo({ top: 0 }); window.location.href = '/'; }} />} />
+      <Route path="/events" element={<Home initialView="events" />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
