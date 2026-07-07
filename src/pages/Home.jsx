@@ -476,10 +476,10 @@ export default function Home() {
         <div className="grid items-start" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "clamp(32px, 4vw, 60px)" }}>
           <div>
             <div style={{ ...fontSerif, fontStyle: "italic", fontWeight: 400, fontSize: "clamp(36px, 4vw, 56px)", lineHeight: 1.1, color: "var(--accent)", marginBottom: 24, maxWidth: 540 }}>
-              Case Pod <Mic size={28} style={{ display: "inline", verticalAlign: "middle", marginLeft: "0.2em" }} />
+              Agent X <Mic size={28} style={{ display: "inline", verticalAlign: "middle", marginLeft: "0.2em" }} />
             </div>
             <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(18px, 1.4vw, 22px)", lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.78)", maxWidth: 460, marginBottom: 32 }}>
-              Conversations with the people I would actually introduce you to. Vendors building for agencies, principals who buy from them, and the market between.
+              Behind the scenes of a real agency, rebuilt in the open. Walking the floor, finding what's broken, and installing best practices one episode at a time.
             </div>
             <div className="flex gap-3.5 flex-wrap">
               {["Apple Podcasts", "Spotify", "YouTube", "RSS"].map((p) => (
@@ -499,11 +499,11 @@ export default function Home() {
               Latest · Ep 04
             </div>
             <h3 style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(26px, 2.4vw, 38px)", lineHeight: 1.15, letterSpacing: "-0.025em", color: "var(--ink)", marginTop: 0, marginBottom: 14 }}>
-              Why we walked away from the enterprise tier.
+              The renewal book nobody had touched in three years.
             </h3>
-            <div style={{ ...fontSerif, fontStyle: "italic", fontSize: 17, color: "rgba(var(--ink-rgb), 0.6)", marginBottom: 20 }}>with [guest name], [agency name]</div>
+            <div style={{ ...fontSerif, fontStyle: "italic", fontSize: 17, color: "rgba(var(--ink-rgb), 0.6)", marginBottom: 20 }}>on the ground at [agency name]</div>
             <p style={{ ...fontDisplay, fontWeight: 400, fontSize: 16, lineHeight: 1.6, color: "rgba(var(--ink-rgb), 0.62)", margin: "0 0 24px 0" }}>
-              Most vendors chase the biggest logo on the deck. This agency principal explains why that's exactly backwards if you're selling to brokers, and what he tells founders who ask him to pilot.
+              We open the books at a real agency, find where the hours are leaking, and fix it on camera. This episode: a renewal process running on sticky notes, and what it looks like rebuilt.
             </p>
             <button type="button" className="inline-flex items-center gap-2.5 cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "13px 22px", letterSpacing: "0.02em" }}>
               ▸ Play episode · 47:23
