@@ -86,3 +86,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  --site-bg: #0A0A0A;
+  --bg-rgb: 10, 10, 10;
+  --panel: #13110D;
+  --ink: #F0EBE0;
+  --ink-rgb: 240, 235, 224;
+  --accent: #3DCAB8;
+  --accent-rgb: 61, 202, 184;
+  --accent-ink: #0A0A0A;
+  --muted: #6B6760;
+}
+
+[data-theme="light"] {
+  --site-bg: #F0EBE0;
+  --bg-rgb: 240, 235, 224;
+  --panel: #E7E0D1;
+  --ink: #17140F;
+  --ink-rgb: 23, 20, 15;
+  --accent: #1D9E8C;
+  --accent-rgb: 29, 158, 140;
+  --accent-ink: #F0EBE0;
+  --muted: #857E70;
+}
+
+body {
+  background-color: var(--site-bg);
+}
