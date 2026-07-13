@@ -155,7 +155,7 @@ export default function Home({ initialView = "home" }) {
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
 
   const vendors = [
-    { name: "1Fort", category: "Commercial Lines", since: "07·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/49dd4550a_generated_image.png" },
+    { name: "1Fort", category: "Commercial Lines", since: "07·26", thumb: "https://cdn.prod.website-files.com/61ca02c84b3663510844ab94/6a402495d7ef552bc397f05b_1Fort%20AI%C2%A0.svg", thumbBg: "#ffffff", thumbFit: "contain" },
     { name: "Submissions Co.", category: "Submissions", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/1a13e9ac9_generated_image.png" },
     { name: "AgencyBeam", category: "AMS", since: "01·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/8800b4fd6_generated_image.png" },
     { name: "Hearth Compare", category: "Personal Lines", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/de2946259_generated_image.png" },
@@ -244,8 +244,8 @@ export default function Home({ initialView = "home" }) {
               <div className="flex items-center" style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(22px, 3.6vw, 52px)", lineHeight: 1, letterSpacing: "-0.025em", color: "var(--ink)", gap: "clamp(12px, 2vw, 24px)" }}>
                 <span style={{ whiteSpace: "nowrap" }}>{v.name}</span>
                 {hoveredVendor === i && v.thumb && (
-                  <div style={{ width: 120, height: 74, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(var(--ink-rgb),0.1)", boxShadow: "0 12px 32px rgba(0,0,0,0.7)", flexShrink: 0 }}>
-                    <img src={v.thumb} alt={v.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <div style={{ width: 120, height: 74, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(var(--ink-rgb),0.1)", boxShadow: "0 12px 32px rgba(0,0,0,0.7)", flexShrink: 0, background: v.thumbBg || "transparent" }}>
+                    <img src={v.thumb} alt={v.name} style={{ width: "100%", height: "100%", objectFit: v.thumbFit || "cover", display: "block", padding: v.thumbFit === "contain" ? 12 : 0, boxSizing: "border-box" }} />
                   </div>
                 )}
                 {hoveredVendor === i && (
