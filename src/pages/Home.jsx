@@ -155,7 +155,7 @@ export default function Home({ initialView = "home" }) {
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
 
   const vendors = [
-    { name: "1Fort", category: "Commercial Lines", since: "07·26", thumb: "https://base44.app/api/apps/6a037576ebf42363ca2506d2/files/mp/public/6a037576ebf42363ca2506d2/3cc89497b_1fort-transparent-v3.png", thumbFit: "contain", thumbBg: "#26251F" },
+    { name: "1Fort AI", category: "Commercial Lines", since: "07·26", thumb: "https://base44.app/api/apps/6a037576ebf42363ca2506d2/files/mp/public/6a037576ebf42363ca2506d2/3cc89497b_1fort-transparent-v3.png", thumbFit: "contain", thumbBg: "#26251F" },
     { name: "Submissions Co.", category: "Submissions", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/1a13e9ac9_generated_image.png" },
     { name: "AgencyBeam", category: "AMS", since: "01·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/8800b4fd6_generated_image.png" },
     { name: "Hearth Compare", category: "Personal Lines", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/de2946259_generated_image.png" },
