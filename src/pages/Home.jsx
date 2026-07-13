@@ -206,8 +206,8 @@ export default function Home({ initialView = "home" }) {
 
         <div className="relative z-10 pointer-events-none">
 
-          <h1 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(36px, 10vw, 240px)", lineHeight: 0.88, letterSpacing: "-0.045em", margin: 0, color: "var(--ink)", maxWidth: 1400 }}>
-            Content for the people <Bracket>rebuilding insurance</Bracket>.
+          <h1 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(34px, 8.8vw, 210px)", lineHeight: 0.88, letterSpacing: "-0.045em", margin: 0, color: "var(--ink)", maxWidth: 1480 }}>
+            <span style={{ whiteSpace: "nowrap" }}>Content for the people</span> <Bracket>rebuilding insurance</Bracket>.
           </h1>
         </div>
 
