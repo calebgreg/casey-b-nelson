@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Mic } from "lucide-react";
 import VendorIntroDrawer from "@/components/VendorIntroDrawer";
 import SiteHeader from "@/components/SiteHeader";
-import EventsView from "@/components/EventsView";
+import PropertiesSection from "@/components/PropertiesSection";
+import AgencyXView from "@/components/AgencyXView";
+import MicedUpView from "@/components/MicedUpView";
+import CommunityView from "@/components/CommunityView";
 
 export default function Home({ initialView = "home" }) {
   const [activeView, setActiveView] = useState(initialView);
-  const [vendorForm, setVendorForm] = useState({ company: "", category: "", why: "", submitted: false });
   const [agencyForm, setAgencyForm] = useState({ agency: "", problem: "", submitted: false });
   const [briefSignup, setBriefSignup] = useState({ email: "", submitted: false });
   const [hoveredVendor, setHoveredVendor] = useState(null);
   const [thumbPos, setThumbPos] = useState({ x: 0, y: 0 });
   const [selectedVendor, setSelectedVendor] = useState(null);
-  const [channel, setChannel] = useState("email");
   const canvasRef = useRef(null);
   const cursorRef = useRef({ x: 0, y: 0 });
 
@@ -169,7 +169,6 @@ export default function Home({ initialView = "home" }) {
     { name: "Northsight", category: "Data", since: "04·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/0092fe2ab_generated_image.png" },
   ];
 
-  const submitVendorForm = (e) => { e.preventDefault(); setVendorForm({ ...vendorForm, submitted: true }); };
   const submitAgencyForm = (e) => { e.preventDefault(); setAgencyForm({ ...agencyForm, submitted: true }); };
   const submitBriefSignup = (e) => { e.preventDefault(); setBriefSignup({ ...briefSignup, submitted: true }); };
 
@@ -196,11 +195,6 @@ export default function Home({ initialView = "home" }) {
     </div>
   );
 
-  const channelTabs = [
-    { id: "email", label: "The email", sub: "Written intro", num: "01" },
-    { id: "text",  label: "The text",  sub: "Direct handoff", num: "02" },
-    { id: "stage", label: "The stage", sub: "Public endorsement", num: "03" },
-  ];
 
   // ---------------- VIEWS ----------------
 
@@ -213,169 +207,18 @@ export default function Home({ initialView = "home" }) {
         <div className="relative z-10 pointer-events-none">
 
           <h1 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(36px, 10vw, 240px)", lineHeight: 0.88, letterSpacing: "-0.045em", margin: 0, color: "var(--ink)", maxWidth: 1400 }}>
-            Introductions in <Bracket>insurance</Bracket>.
+            Media for the people <Bracket>rebuilding insurance</Bracket>.
           </h1>
         </div>
 
         <div className="relative z-10 pointer-events-none" style={{ maxWidth: 620, ...fontDisplay, fontWeight: 400, fontSize: "clamp(16px, 1.4vw, 21px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.78)" }}>
-          A private list of vendors I introduce to agencies that ask.{" "}
-          <span style={{ color: "var(--ink)" }}>Vendors retain me. Agencies pay nothing.</span>
+          Three properties, one obsession: how independent agencies actually get built.{" "}
+          <span style={{ color: "var(--ink)" }}>Agency X. Miced Up. The Community.</span>
         </div>
       </section>
 
-      {/* THE PRODUCT */}
-      <section style={{ padding: "clamp(100px, 14vw, 200px) 0 clamp(80px, 10vw, 140px) 0" }}>
-        <SectionLabel>The offer.</SectionLabel>
-
-        <div style={{ ...fontDisplay, fontWeight: 600, fontSize: "clamp(24px, 2.8vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", maxWidth: 980, color: "var(--ink)", marginBottom: "clamp(24px, 3vw, 40px)" }}>
-          A small, working list of vendors I'd actually <Bracket>introduce to a friend</Bracket>. Agencies use it to skip the cold pitch carousel. Vendors retain me to get put in front of buyers who <Bracket>pick up the phone</Bracket>. The introduction is the product. Everything else is logistics.
-        </div>
-        <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(16px, 1.4vw, 20px)", lineHeight: 1.55, maxWidth: 820, color: "rgba(var(--ink-rgb), 0.55)", marginBottom: "clamp(48px, 6vw, 80px)" }}>
-          Cold outreach is collapsing. Reply rates in the channel have fallen every quarter. Retain me, and your next conversation with a principal happens <Bracket>three ways</Bracket>.
-        </div>
-
-        {/* CHANNEL TOGGLE */}
-        <div className="flex" style={{ maxWidth: 760, margin: "0 auto clamp(20px, 2.5vw, 32px) auto", borderBottom: "1px solid rgba(var(--ink-rgb), 0.1)" }}>
-          {channelTabs.map((c) => {
-            const isActive = channel === c.id;
-            return (
-              <button key={c.id} type="button" onClick={() => setChannel(c.id)} className="cursor-pointer flex-1 text-left"
-                style={{ background: "transparent", border: "none", borderBottom: isActive ? "1px solid var(--accent)" : "1px solid transparent", marginBottom: -1, padding: "clamp(14px, 2vw, 22px) clamp(12px, 2vw, 20px)", transition: "all 0.22s ease" }}>
-                <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(14px, 1.4vw, 19px)", letterSpacing: "-0.02em", color: isActive ? "var(--ink)" : "rgba(var(--ink-rgb), 0.42)", lineHeight: 1.1, marginBottom: 5, transition: "color 0.22s" }}>{c.label}</div>
-                <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(11px, 1vw, 13px)", color: isActive ? "rgba(var(--accent-rgb), 0.7)" : "rgba(var(--ink-rgb), 0.22)", transition: "color 0.22s" }}>{c.sub}</div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* CHANNEL PANEL */}
-        <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
-          {["email", "text", "stage"].map((id) => (
-            <div key={id} style={{ position: id === "email" ? "relative" : "absolute", top: 0, left: 0, right: 0, background: "var(--panel)", border: "1px solid rgba(var(--ink-rgb), 0.12)", boxShadow: "0 30px 80px rgba(0,0,0,0.6)", opacity: channel === id ? 1 : 0, pointerEvents: channel === id ? "auto" : "none", transition: "opacity 0.3s ease", zIndex: channel === id ? 1 : 0 }}>
-            <div style={{ position: "absolute", top: -1, left: -1, width: 60, height: 1, background: "var(--accent)" }} />
-            <div style={{ position: "absolute", top: -1, left: -1, width: 1, height: 60, background: "var(--accent)" }} />
-
-          {id === "email" && (
-            <>
-              <div style={{ padding: "clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 36px)", borderBottom: "1px solid rgba(var(--ink-rgb), 0.08)", display: "grid", gap: 10 }}>
-                {[
-                  { label: "From", value: "Casey B. Nelson <casey@caseybnelson.com>" },
-                  { label: "To", value: "Alice Park, Principal at Premier Risk Brokers" },
-                  { label: "Cc", value: "[Founder], CEO at [Your Company]" },
-                  { label: "Subject", value: "an introduction", emphasize: true },
-                ].map((row) => (
-                  <div key={row.label} className="flex" style={{ gap: 16, fontSize: "clamp(12px, 1vw, 13px)", alignItems: "baseline", flexWrap: "wrap" }}>
-                    <span style={{ ...fontDisplay, fontWeight: 500, color: "var(--muted)", width: 56, textTransform: "uppercase", letterSpacing: "0.08em", fontSize: 10, flexShrink: 0 }}>{row.label}</span>
-                    <span style={{ ...fontDisplay, fontWeight: row.emphasize ? 600 : 400, color: row.emphasize ? "var(--ink)" : "rgba(var(--ink-rgb), 0.78)", fontSize: row.emphasize ? "clamp(14px, 1.2vw, 16px)" : "clamp(13px, 1.1vw, 14px)" }}>{row.value}</span>
-                  </div>
-                ))}
-              </div>
-              <div style={{ padding: "clamp(24px, 3.5vw, 44px) clamp(20px, 3vw, 36px)", ...fontDisplay, fontWeight: 400, fontSize: "clamp(15px, 1.3vw, 17px)", lineHeight: 1.7, color: "rgba(var(--ink-rgb), 0.88)" }}>
-                <p style={{ margin: "0 0 18px 0" }}>Alice,</p>
-                <p style={{ margin: "0 0 18px 0" }}><span style={{ color: "var(--ink)", fontWeight: 500 }}>[Your Company]</span> handles submissions for agencies in your size band. I've spent time with their team and would put them in the small handful of people I'd actually trust here.</p>
-                <p style={{ margin: "0 0 28px 0" }}>Worth fifteen minutes if you've been thinking about ingestion speed. Cc'd is [Founder]. They'll take it from there.</p>
-                <div style={{ ...fontScript, fontSize: "clamp(30px, 3.5vw, 44px)", color: "var(--accent)", lineHeight: 1, marginTop: 12 }}>Casey</div>
-              </div>
-              <div style={{ padding: "14px clamp(20px, 3vw, 36px)", borderTop: "1px solid rgba(var(--ink-rgb), 0.06)", display: "flex", justifyContent: "space-between", alignItems: "center", ...fontDisplay, fontSize: 11, letterSpacing: "0.04em", color: "var(--muted)", flexWrap: "wrap", gap: 8 }}>
-                <span>1 of 1 in thread</span>
-                <span style={{ ...fontSerif, fontStyle: "italic", fontSize: 12, color: "var(--accent)" }}>sent personally, never automated</span>
-              </div>
-            </>
-          )}
-
-          {id === "text" && (
-            <div style={{ padding: "clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px)" }}>
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 4, paddingBottom: 24, marginBottom: 28, borderBottom: "1px solid rgba(var(--ink-rgb), 0.06)" }}>
-                <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(var(--accent-rgb), 0.12)", border: "1px solid rgba(var(--accent-rgb), 0.3)", display: "flex", justifyContent: "center", alignItems: "center", ...fontScript, fontSize: 22, color: "var(--accent)", lineHeight: 1, paddingBottom: 4 }}>C</div>
-                <div style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--ink)", marginTop: 6 }}>Casey B. Nelson</div>
-                <div style={{ ...fontDisplay, fontSize: 11, color: "var(--muted)", letterSpacing: "0.04em" }}>iMessage · Tue 9:42 AM</div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 520, margin: "0 auto" }}>
-                {[
-                  { text: "Alice. Quick one. Two people you should know each other.", align: "start", bg: "rgba(var(--ink-rgb), 0.08)", color: "var(--ink)", radius: "18px 18px 18px 4px", maxW: "78%" },
-                  { text: <><span style={{ fontWeight: 600 }}>[Founder]</span> at <span style={{ fontWeight: 600 }}>[Your Company]</span>. Built the submissions tool you mentioned needing last month. They're at your scale, not enterprise. Worth a look.</>, align: "start", bg: "rgba(var(--ink-rgb), 0.08)", color: "var(--ink)", radius: "18px 18px 18px 4px", maxW: "82%" },
-                  { text: "Cool with me passing your number?", align: "start", bg: "rgba(var(--ink-rgb), 0.08)", color: "var(--ink)", radius: "18px 18px 18px 4px", maxW: "60%" },
-                ].map((bubble, i) => (
-                  <div key={i} style={{ alignSelf: `flex-${bubble.align}`, maxWidth: bubble.maxW, background: bubble.bg, color: bubble.color, borderRadius: bubble.radius, padding: "12px 16px", ...fontDisplay, fontSize: "clamp(14px, 1.2vw, 16px)", lineHeight: 1.45 }}>{bubble.text}</div>
-                ))}
-                <div style={{ alignSelf: "flex-end", ...fontDisplay, fontSize: 10, color: "var(--muted)", letterSpacing: "0.04em", marginTop: 4 }}>Read 9:43 AM</div>
-                <div style={{ alignSelf: "flex-end", maxWidth: "50%", background: "var(--accent)", color: "var(--accent-ink)", borderRadius: "18px 18px 4px 18px", padding: "12px 16px", ...fontDisplay, fontSize: "clamp(14px, 1.2vw, 16px)", fontWeight: 500, lineHeight: 1.45, marginTop: 8 }}>Send it.</div>
-              </div>
-              <div style={{ marginTop: 32, paddingTop: 16, borderTop: "1px solid rgba(var(--ink-rgb), 0.06)", display: "flex", justifyContent: "center", ...fontSerif, fontStyle: "italic", fontSize: 12, color: "var(--accent)" }}>when the principal already takes my texts</div>
-            </div>
-          )}
-
-          {id === "stage" && (
-            <div>
-              <div style={{ padding: "clamp(20px, 2.5vw, 28px) clamp(20px, 3vw, 36px)", borderBottom: "1px solid rgba(var(--ink-rgb), 0.08)", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
-                <div>
-                  <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>↗ Speaking · Keynote</div>
-                  <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(20px, 1.8vw, 26px)", letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.15 }}>Insurtech Hartford 2026</div>
-                  <div style={{ ...fontSerif, fontStyle: "italic", fontSize: 14, color: "rgba(var(--ink-rgb), 0.6)", marginTop: 4 }}>"The vendors actually worth your time."</div>
-                </div>
-                <div style={{ ...fontDisplay, fontSize: 11, color: "var(--muted)", letterSpacing: "0.04em", textAlign: "right", whiteSpace: "nowrap" }}>June 18, 2026<br />4:00 PM main stage</div>
-              </div>
-              <div style={{ padding: "clamp(24px, 3.5vw, 44px) clamp(20px, 3vw, 36px)" }}>
-                <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 18 }}>// From the talk</div>
-                <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(17px, 1.6vw, 24px)", lineHeight: 1.45, letterSpacing: "-0.01em", color: "rgba(var(--ink-rgb), 0.92)", paddingLeft: 18, borderLeft: "2px solid var(--accent)" }}>
-                  "I'll give you the five vendors I'd hand my own book to. <span style={{ color: "var(--ink)", fontWeight: 600 }}>[Your Company]</span> is one of them, and here's why I won't shut up about them this year."
-                </div>
-                <div style={{ marginTop: 28, paddingTop: 20, borderTop: "1px solid rgba(var(--ink-rgb), 0.06)", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 24 }}>
-                  {[{ label: "Room", val: "~600 principals" }, { label: "Featured vendors", val: "5 from the list" }, { label: "Format", val: "Named on stage" }].map((s) => (
-                    <div key={s.label}>
-                      <div style={{ ...fontDisplay, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>{s.label}</div>
-                      <div style={{ ...fontDisplay, fontWeight: 600, fontSize: 15, color: "var(--ink)" }}>{s.val}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{ padding: "14px clamp(20px, 3vw, 36px)", borderTop: "1px solid rgba(var(--ink-rgb), 0.06)", display: "flex", justifyContent: "space-between", alignItems: "center", ...fontDisplay, fontSize: 11, letterSpacing: "0.04em", color: "var(--muted)", flexWrap: "wrap", gap: 8 }}>
-                <span>4 conferences booked · 2026</span>
-                <span style={{ ...fontSerif, fontStyle: "italic", fontSize: 12, color: "var(--accent)" }}>public endorsement, on the record</span>
-              </div>
-            </div>
-          )}
-          </div>
-          ))}
-        </div>
-
-        {/* PROOF STATS */}
-        <div className="grid" style={{ marginTop: "clamp(60px, 8vw, 100px)", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: "rgba(var(--ink-rgb), 0.12)", border: "1px solid rgba(var(--ink-rgb), 0.12)" }}>
-          {({
-            email: [
-              { num: "60%+", label: "Reply rate", sub: "vs 1–3% on cold outreach" },
-              { num: "400+", label: "Agency network", sub: "Personal + commercial lines, US" },
-              { num: "2–4", label: "Intros per month", sub: "Per vendor on the list" },
-            ],
-            text: [
-              { num: "~2min", label: "Response time", sub: "When I text, they reply" },
-              { num: "400+", label: "Direct contacts", sub: "Principals, not assistants" },
-              { num: "1:1", label: "Every intro", sub: "Never a group thread" },
-            ],
-            stage: [
-              { num: "4", label: "Conferences booked", sub: "2026 calendar" },
-              { num: "~600", label: "Principals per room", sub: "Decision-makers, not staff" },
-              { num: "5", label: "Vendors named on stage", sub: "Per event, from the list" },
-            ],
-          }[channel]).map((stat, i) => (
-            <div key={i} style={{ background: "var(--site-bg)", padding: "clamp(28px, 3.5vw, 44px) clamp(20px, 3vw, 36px)" }}>
-              <div style={{ ...fontDisplay, fontWeight: 800, fontSize: "clamp(48px, 6vw, 80px)", lineHeight: 0.95, letterSpacing: "-0.04em", color: "var(--ink)", marginBottom: 14 }}>{stat.num}</div>
-              <div style={{ ...fontDisplay, fontWeight: 600, fontSize: "clamp(15px, 1.2vw, 17px)", color: "var(--ink)", marginBottom: 6, letterSpacing: "-0.01em" }}>{stat.label}</div>
-              <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(13px, 1vw, 15px)", lineHeight: 1.4, color: "rgba(var(--ink-rgb), 0.5)" }}>{stat.sub}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* TERMS + CTA */}
-        <div className="flex flex-wrap items-baseline" style={{ marginTop: "clamp(48px, 6vw, 72px)", gap: "clamp(24px, 3vw, 48px)", justifyContent: "space-between" }}>
-          <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(16px, 1.3vw, 19px)", lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.7)", maxWidth: 620 }}>
-            Flat monthly retainer. No commissions, no per-deal fees, no equity. The fee is the same whether I introduce you once or twenty times. Keeps the incentive on <Bracket>signal, not volume</Bracket>.
-          </div>
-          <button type="button" onClick={() => goTo("vendors")} className="cursor-pointer inline-flex items-center" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em", gap: 10, whiteSpace: "nowrap" }}>
-            Apply to be on the list →
-          </button>
-        </div>
-      </section>
+      {/* THE PROPERTIES */}
+      <PropertiesSection onNav={goTo} />
 
       {/* ON THE LIST */}
       <section style={{ padding: "clamp(80px, 10vw, 140px) 0" }}>
@@ -414,67 +257,6 @@ export default function Home({ initialView = "home" }) {
         </div>
       </section>
 
-      {/* CASE POD */}
-      <section style={{ padding: "clamp(80px, 10vw, 140px) 0" }}>
-        <SectionLabel>The podcast.</SectionLabel>
-
-        <div className="grid items-start" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "clamp(32px, 4vw, 60px)" }}>
-          <div>
-            <div style={{ ...fontSerif, fontStyle: "italic", fontWeight: 400, fontSize: "clamp(36px, 4vw, 56px)", lineHeight: 1.1, color: "var(--accent)", marginBottom: 24, maxWidth: 540 }}>
-              Agent X <Mic size={28} style={{ display: "inline", verticalAlign: "middle", marginLeft: "0.2em" }} />
-            </div>
-            <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(18px, 1.4vw, 22px)", lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.78)", maxWidth: 460, marginBottom: 32 }}>
-              Behind the scenes of a real agency, rebuilt in the open. Walking the floor, finding what's broken, and installing best practices one episode at a time.
-            </div>
-            <div className="flex gap-3.5 flex-wrap">
-              {["Apple Podcasts", "Spotify", "YouTube", "RSS"].map((p) => (
-                <a key={p} href="#"
-                  style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, letterSpacing: "0.02em", color: "rgba(var(--ink-rgb), 0.6)", textDecoration: "none", paddingBottom: 4, borderBottom: "1px solid rgba(var(--ink-rgb), 0.2)", transition: "color 0.2s, border-color 0.2s" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.borderBottomColor = "var(--accent)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(var(--ink-rgb), 0.6)"; e.currentTarget.style.borderBottomColor = "rgba(var(--ink-rgb), 0.2)"; }}>
-                  {p} ↗
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="inline-flex items-center gap-2.5" style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 14 }}>
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)" }} />
-              Latest · Ep 04
-            </div>
-            <h3 style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(26px, 2.4vw, 38px)", lineHeight: 1.15, letterSpacing: "-0.025em", color: "var(--ink)", marginTop: 0, marginBottom: 14 }}>
-              The renewal book nobody had touched in three years.
-            </h3>
-            <div style={{ ...fontSerif, fontStyle: "italic", fontSize: 17, color: "rgba(var(--ink-rgb), 0.6)", marginBottom: 20 }}>on the ground at [agency name]</div>
-            <p style={{ ...fontDisplay, fontWeight: 400, fontSize: 16, lineHeight: 1.6, color: "rgba(var(--ink-rgb), 0.62)", margin: "0 0 24px 0" }}>
-              We open the books at a real agency, find where the hours are leaking, and fix it on camera. This episode: a renewal process running on sticky notes, and what it looks like rebuilt.
-            </p>
-            <button type="button" className="inline-flex items-center gap-2.5 cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "13px 22px", letterSpacing: "0.02em" }}>
-              ▸ Play episode · 47:23
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA STRIPE */}
-      <section style={{ padding: "clamp(80px, 10vw, 140px) 0" }}>
-        <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 1, background: "rgba(var(--ink-rgb), 0.12)", border: "1px solid rgba(var(--ink-rgb), 0.12)" }}>
-          {[
-            { id: "vendors", tag: "↳ For vendors", headline: <>Apply to be <Bracket>on the list</Bracket>.</>, body: "Small intake per quarter. Tell me who it's for and why this is the right room." },
-            { id: "agencies", tag: "↳ For agencies", headline: <>Tell me what <Bracket>you're solving</Bracket>.</>, body: "No fee for the intro. For-fee for the implementation if you want help getting it running." },
-          ].map((card) => (
-            <div key={card.id} onClick={() => goTo(card.id)} className="cursor-pointer" style={{ background: "var(--site-bg)", padding: "clamp(40px, 5vw, 64px)", transition: "background 0.3s" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--panel)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--site-bg)")}>
-              <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 24 }}>{card.tag}</div>
-              <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(36px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "var(--ink)", marginBottom: 18 }}>{card.headline}</div>
-              <div style={{ ...fontDisplay, fontSize: 16, lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.6)" }}>{card.body}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* BRIEF */}
       <section style={{ padding: "clamp(80px, 10vw, 140px) 0" }}>
         <SectionLabel>Brief.</SectionLabel>
@@ -500,43 +282,6 @@ export default function Home({ initialView = "home" }) {
         </div>
       </section>
     </>
-  );
-
-  const VendorsView = () => (
-    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
-      <button type="button" onClick={() => goTo("home")} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "var(--muted)", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
-      <SectionLabel>For vendors.</SectionLabel>
-      <p style={{ ...fontDisplay, fontSize: "clamp(18px, 1.5vw, 22px)", lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.7)", maxWidth: 640, marginTop: 0, marginBottom: 56 }}>
-        Small intake per quarter. Tell me what you do, who it's for, and why this is the right room.
-      </p>
-      {!vendorForm.submitted ? (
-        <form onSubmit={submitVendorForm} className="grid gap-8" style={{ maxWidth: 640 }}>
-          {[
-            { k: "company", label: "Company", placeholder: "Acme Submissions, Inc." },
-            { k: "category", label: "Category", placeholder: "AMS, raters, benefits, claims, personal lines..." },
-          ].map((f) => (
-            <div key={f.k}>
-              <label className="block" style={{ ...fontDisplay, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>{f.label}</label>
-              <input type="text" required value={vendorForm[f.k]} onChange={(e) => setVendorForm({ ...vendorForm, [f.k]: e.target.value })} placeholder={f.placeholder}
-                style={{ background: "transparent", border: "none", borderBottom: "1px solid rgba(var(--ink-rgb), 0.2)", ...fontDisplay, fontSize: 18, color: "var(--ink)", padding: "10px 0", outline: "none", width: "100%" }} />
-            </div>
-          ))}
-          <div>
-            <label className="block" style={{ ...fontDisplay, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Why this room, why now</label>
-            <textarea required value={vendorForm.why} onChange={(e) => setVendorForm({ ...vendorForm, why: e.target.value })} placeholder="The one thing about your product I'd tell an agency principal in a sentence."
-              style={{ background: "transparent", border: "1px solid rgba(var(--ink-rgb), 0.12)", ...fontDisplay, fontSize: 17, color: "var(--ink)", padding: 16, outline: "none", width: "100%", minHeight: 140, resize: "vertical", lineHeight: 1.5 }} />
-          </div>
-          <button type="submit" className="self-start cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em" }}>
-            Submit application →
-          </button>
-        </form>
-      ) : (
-        <div style={{ maxWidth: 640 }}>
-          <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(28px, 3vw, 44px)", lineHeight: 1.2, color: "var(--accent)", marginBottom: 16 }}>Received.</div>
-          <p style={{ ...fontDisplay, fontSize: 18, lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.72)" }}>I'll read it this week. If it's a fit, you'll hear from me directly. If not, I'll tell you why and what I'd need to see.</p>
-        </div>
-      )}
-    </section>
   );
 
   const AgenciesView = () => (
@@ -620,22 +365,23 @@ export default function Home({ initialView = "home" }) {
       {/* MAIN */}
       <main className="mx-auto" style={{ padding: "60px clamp(20px, 5vw, 80px) 0 clamp(20px, 5vw, 80px)", maxWidth: 1680 }}>
         {activeView === "home" && <HomeView />}
-        {activeView === "vendors" && <VendorsView />}
         {activeView === "agencies" && <AgenciesView />}
-        {activeView === "events" && <EventsView onBack={() => goTo("home")} />}
+        {activeView === "agencyx" && <AgencyXView onBack={() => goTo("home")} />}
+        {activeView === "micedup" && <MicedUpView onBack={() => goTo("home")} />}
+        {activeView === "community" && <CommunityView onBack={() => goTo("home")} />}
       </main>
 
       {/* FOOTER */}
       <footer className="mx-auto" style={{ padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) clamp(40px, 4vw, 60px) clamp(20px, 5vw, 80px)", maxWidth: 1680, borderTop: "1px solid rgba(var(--ink-rgb), 0.12)", marginTop: "clamp(80px, 12vw, 140px)" }}>
         <div style={{ ...fontDisplay, fontWeight: 800, fontSize: "clamp(40px, 8vw, 120px)", lineHeight: 0.95, letterSpacing: "-0.04em", marginBottom: "clamp(40px, 6vw, 80px)", maxWidth: 1200 }}>
-          The introduction is the <Bracket>product</Bracket>.
+          Built in the open, <Bracket>on the record</Bracket>.
         </div>
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "clamp(28px, 3vw, 48px)", marginBottom: 60 }}>
           {[
-            { title: "Contact.", lines: [<>Casey B. Nelson</>, <>Private list, by introduction</>, <a href="mailto:casey@caseybnelson.com" style={{ color: "var(--accent)", textDecoration: "none" }}>casey@caseybnelson.com</a>] },
+            { title: "Contact.", lines: [<>Casey B. Nelson</>, <>A media company for the insurance channel</>, <a href="mailto:casey@caseybnelson.com" style={{ color: "var(--accent)", textDecoration: "none" }}>casey@caseybnelson.com</a>] },
             { title: "Listen.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>Apple Podcasts ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Spotify ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>YouTube ↗</a>] },
             { title: "Follow.", lines: [<a href="#" style={{ color: "inherit", textDecoration: "none" }}>LinkedIn ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Twitter ↗</a>, <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Newsletter ↗</a>] },
-            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("vendors")} className="cursor-pointer">For vendors</span>, <span onClick={() => goTo("agencies")} className="cursor-pointer">For agencies</span>, <span onClick={() => goTo("events")} className="cursor-pointer">Events</span>] },
+            { title: "Index.", lines: [<span onClick={() => goTo("home")} className="cursor-pointer">Home</span>, <span onClick={() => goTo("agencyx")} className="cursor-pointer">Agency X</span>, <span onClick={() => goTo("micedup")} className="cursor-pointer">Miced Up</span>, <span onClick={() => goTo("community")} className="cursor-pointer">The Community</span>] },
           ].map((col) => (
             <div key={col.title}>
               <div style={{ fontWeight: 600, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 14 }}>{col.title}</div>

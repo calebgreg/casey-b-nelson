@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-export default function EventsView({ onBack }) {
-  const [form, setForm] = useState({ org: "", event: "", date: "", audience: "", note: "", submitted: false });
+const fontDisplay = { fontFamily: '"Inter Tight", system-ui, sans-serif' };
+const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
 
-  const fontDisplay = { fontFamily: '"Inter Tight", system-ui, sans-serif' };
-  const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
+export default function MicedUpView({ onBack }) {
+  const [form, setForm] = useState({ org: "", event: "", date: "", audience: "", note: "", submitted: false });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,12 +15,13 @@ export default function EventsView({ onBack }) {
     <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={onBack} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "var(--muted)", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
 
+      <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 20 }}>Property 02 · The stage</div>
       <div style={{ marginBottom: "clamp(48px, 6vw, 72px)" }}>
         <h2 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(56px, 11vw, 140px)", lineHeight: 0.92, letterSpacing: "-0.04em", margin: 0, color: "var(--ink)", marginBottom: 32 }}>
-          Request Casey to speak.
+          Miced Up.
         </h2>
         <p style={{ ...fontDisplay, fontSize: "clamp(17px, 1.3vw, 19px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.62)", maxWidth: 600 }}>
-          Networks, associations, masterminds, agencies, and conferences. If you're gathering people in the insurance channel, Casey speaks on vendor selection, market dynamics, and building real networks.
+          Casey, live. Networks, associations, masterminds, agencies, and conferences. If you're gathering people in the insurance channel, put him on stage — vendor selection, market dynamics, and building real networks.
         </p>
       </div>
 
@@ -69,7 +70,7 @@ export default function EventsView({ onBack }) {
               style={{ background: "transparent", border: "1px solid rgba(var(--ink-rgb), 0.12)", ...fontDisplay, fontSize: 16, color: "var(--ink)", padding: 16, outline: "none", width: "100%", minHeight: 100, resize: "vertical", lineHeight: 1.5 }} />
           </div>
           <button type="submit" className="self-start cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em" }}>
-            Submit request →
+            Request a booking →
           </button>
         </form>
       ) : (

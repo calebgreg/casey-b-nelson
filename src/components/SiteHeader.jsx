@@ -78,8 +78,9 @@ export default function SiteHeader({ activeView = "", onNav }) {
       </div>
       <nav className="flex" style={{ gap: "clamp(16px, 3vw, 28px)" }}>
         {[
-          { id: "vendors", label: "Vendors" },
-          { id: "agencies", label: "Agencies" },
+          { id: "agencyx", label: "Agency X" },
+          { id: "micedup", label: "Miced Up" },
+          { id: "community", label: "Community" },
         ].map((item) => (
           <button key={item.id} type="button" onClick={() => nav(item.id)} className="cursor-pointer"
             style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === item.id ? "var(--accent)" : "rgba(var(--ink-rgb), 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
@@ -87,11 +88,6 @@ export default function SiteHeader({ activeView = "", onNav }) {
             {activeView === item.id && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", marginLeft: 6, transform: "translateY(-2px)" }} />}
           </button>
         ))}
-        <button type="button" onClick={() => nav("events")} className="cursor-pointer"
-          style={{ background: "transparent", border: "none", padding: 0, ...fontDisplay, fontWeight: 500, fontSize: "clamp(12px, 2.5vw, 14px)", letterSpacing: "0.01em", color: activeView === "events" ? "var(--accent)" : "rgba(var(--ink-rgb), 0.85)", transition: "color 0.2s", whiteSpace: "nowrap" }}>
-          Events
-          {activeView === "events" && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", marginLeft: 6, transform: "translateY(-2px)" }} />}
-        </button>
         <button type="button" onClick={toggleTheme} className="cursor-pointer" style={{ background: "transparent", border: "none", padding: 0, color: "rgba(var(--ink-rgb), 0.85)", display: "inline-flex", alignItems: "center" }} aria-label="Toggle theme">
           {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
         </button>
