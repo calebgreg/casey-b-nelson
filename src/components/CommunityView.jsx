@@ -6,17 +6,17 @@ const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
 
 const threads = [
   { title: "Who's actually renewed their AMS contract this year and why?", replies: 47, tag: "Tech stack", last: "12 min ago", hot: true },
-  { title: "Producer comp plans — post yours, roast mine", replies: 89, tag: "People", last: "38 min ago", hot: true },
+  { title: "Producer comp plans: post yours, roast mine", replies: 89, tag: "People", last: "38 min ago", hot: true },
   { title: "Carrier just pulled out of our biggest class. War room thread.", replies: 63, tag: "Markets", last: "1 hr ago", hot: true },
-  { title: "The Renewal Rebuild framework — 60 days in, my numbers", replies: 31, tag: "Agency X", last: "3 hrs ago", hot: false },
+  { title: "The Renewal Rebuild framework: 60 days in, my numbers", replies: 31, tag: "Agency X", last: "3 hrs ago", hot: false },
   { title: "Anyone else's E&O quote double? Comparing notes.", replies: 54, tag: "Operations", last: "5 hrs ago", hot: false },
-  { title: "Hiring my first ops manager — job description teardown", replies: 22, tag: "People", last: "yesterday", hot: false },
+  { title: "Hiring my first ops manager: job description teardown", replies: 22, tag: "People", last: "yesterday", hot: false },
 ];
 
 const programming = [
   { day: "First Tuesday", name: "The Operators Call", desc: "Monthly live session with Casey. One agency problem, worked in public, members in the room." },
   { day: "Third Thursday", name: "Guest AMA", desc: "The people from Agency X episodes and Miced Up stages, taking member questions off the record." },
-  { day: "Always on", name: "The threads", desc: "Vendor comparisons, comp plans, carrier intel — the conversations that can't happen on LinkedIn." },
+  { day: "Always on", name: "The threads", desc: "Vendor comparisons, comp plans, carrier intel. The conversations that can't happen on LinkedIn." },
   { day: "Quarterly", name: "The list briefing", desc: "The vendor list, annotated. Who's earning their spot, who's slipping, before anyone outside sees it." },
 ];
 
@@ -43,7 +43,7 @@ export default function CommunityView({ onBack }) {
         The Community.
       </h2>
       <p style={{ ...fontDisplay, fontWeight: 500, fontSize: "clamp(22px, 2.2vw, 32px)", lineHeight: 1.3, letterSpacing: "-0.02em", color: "var(--ink)", maxWidth: 880, marginTop: 0, marginBottom: "clamp(48px, 6vw, 72px)" }}>
-        The room where agency operators compare notes. What's working, what's broken, and what they'd never buy again — <span style={{ ...fontSerif, fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>said out loud, off the record</span>.
+        The room where agency operators compare notes. What's working, what's broken, and what they'd never buy again, <span style={{ ...fontSerif, fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>said out loud, off the record</span>.
       </p>
 
       {/* STATS */}
@@ -104,7 +104,7 @@ export default function CommunityView({ onBack }) {
           Request an invite.
         </div>
         <p style={{ ...fontDisplay, fontSize: "clamp(15px, 1.2vw, 17px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.6)", maxWidth: 640, marginTop: 0, marginBottom: 36 }}>
-          Operators only — principals and the people running the desk. No vendors, no recruiters, no lurkers. Every member is verified.
+          Operators only: principals and the people running the desk. No vendors, no recruiters, no lurkers. Every member is verified.
         </p>
         {!form.submitted ? (
           <form onSubmit={handleSubmit} className="grid gap-8" style={{ maxWidth: 640 }}>

@@ -4,9 +4,9 @@ const fontDisplay = { fontFamily: '"Inter Tight", system-ui, sans-serif' };
 const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
 
 const properties = [
-  { id: "agencyx", num: "01", tag: "The show", name: "Agency X", body: "A real agency, rebuilt in the open. Walking the floor, finding what's broken, and fixing it on camera — one episode at a time.", cta: "Watch & listen →" },
+  { id: "agencyx", num: "01", tag: "The show", name: "Agency X", body: "A real agency, rebuilt in the open. Walking the floor, finding what's broken, and fixing it on camera, one episode at a time.", cta: "Watch & listen →" },
   { id: "micedup", num: "02", tag: "The stage", name: "Miced Up", body: "Casey, live. Keynotes, panels, and fireside chats for networks, associations, and conferences across the insurance channel.", cta: "Book Casey →" },
-  { id: "community", num: "03", tag: "The room", name: "The Community", body: "Where agency operators compare notes — what's working, what's broken, and what they'd never buy again. Off the record.", cta: "Request an invite →" },
+  { id: "community", num: "03", tag: "The room", name: "The Community", body: "Where agency operators compare notes: what's working, what's broken, and what they'd never buy again. Off the record.", cta: "Request an invite →" },
 ];
 
 export default function PropertiesSection({ onNav }) {

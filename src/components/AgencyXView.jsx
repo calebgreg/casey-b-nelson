@@ -23,7 +23,7 @@ const frameworks = [
 const learnings = [
   { n: "01", t: "The bottleneck is never where the owner thinks it is.", d: "Four agencies in, the owner's diagnosis has been wrong every time. Walk the floor before you buy anything." },
   { n: "02", t: "Nobody owns rollout, so rollout dies.", d: "Every failed tool we've found was bought with enthusiasm and implemented by no one. Assign an owner or don't sign." },
-  { n: "03", t: "Service teams protect broken processes.", d: "Not out of laziness — out of fear. The workaround is the only thing that's never failed them. Fix the fear first." },
+  { n: "03", t: "Service teams protect broken processes.", d: "Not out of laziness, but out of fear. The workaround is the only thing that's never failed them. Fix the fear first." },
   { n: "04", t: "The renewal book is the agency.", d: "New business gets the meetings, renewals pay the payroll. Every rescue starts in the same place." },
 ];
 
@@ -44,7 +44,7 @@ export default function AgencyXView({ onBack }) {
             A real agency, rebuilt in the open <Mic size={28} style={{ display: "inline", verticalAlign: "middle", marginLeft: "0.2em" }} />
           </div>
           <div style={{ ...fontDisplay, fontWeight: 400, fontSize: "clamp(18px, 1.4vw, 22px)", lineHeight: 1.5, color: "rgba(var(--ink-rgb), 0.78)", maxWidth: 460, marginBottom: 32 }}>
-            The show, the clips, the frameworks, and the field notes. We walk the floor of a real agency, find what's broken, fix it on camera — and publish everything we learn.
+            The show, the clips, the frameworks, and the field notes. We walk the floor of a real agency, find what's broken, fix it on camera, and publish everything we learn.
           </div>
           <div className="flex gap-3.5 flex-wrap">
             {["Apple Podcasts", "Spotify", "YouTube", "RSS"].map((p) => (

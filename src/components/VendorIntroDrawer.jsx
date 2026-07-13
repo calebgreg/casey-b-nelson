@@ -86,7 +86,7 @@ export default function VendorIntroDrawer({ vendor, onClose }) {
             <div>
               <div style={{ ...fontSerif, fontStyle: "italic", fontSize: "clamp(28px, 3vw, 44px)", lineHeight: 1.2, color: "var(--accent)", marginBottom: 16 }}>Received.</div>
               <p style={{ ...fontDisplay, fontSize: 17, lineHeight: 1.55, color: "rgba(var(--ink-rgb),0.72)", marginBottom: 32 }}>
-                I'll get back to you within two business days — either with a warm intro to {vendor.name}, or a straight answer about fit.
+                I'll get back to you within two business days: either a warm intro to {vendor.name}, or a straight answer about fit.
               </p>
               <button onClick={onClose} className="cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em" }}>
                 Close

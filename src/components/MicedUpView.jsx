@@ -7,7 +7,7 @@ const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
 const road = [
   { date: "Aug 14, 2026", event: "IIABA Young Agents Summit", where: "Nashville, TN", role: "Keynote", status: "Confirmed" },
   { date: "Sep 09, 2026", event: "Applied Net", where: "Las Vegas, NV", role: "Breakout session", status: "Confirmed" },
-  { date: "Oct 02, 2026", event: "Mastermind — The Rooftop Group", where: "Austin, TX", role: "Fireside chat", status: "Confirmed" },
+  { date: "Oct 02, 2026", event: "Mastermind: The Rooftop Group", where: "Austin, TX", role: "Fireside chat", status: "Confirmed" },
   { date: "Nov 12, 2026", event: "Insurtech Hartford", where: "Hartford, CT", role: "Main stage", status: "Confirmed" },
 ];
 
@@ -37,7 +37,7 @@ export default function MicedUpView({ onBack }) {
             Miced Up.
           </h2>
           <p style={{ ...fontDisplay, fontSize: "clamp(17px, 1.3vw, 19px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.62)", maxWidth: 600, margin: 0 }}>
-            Casey on the road — the stages, the learnings, and the people worth calling out. Keynotes, panels, and fireside chats across the insurance channel.
+            Casey on the road. The stages, the learnings, and the people worth calling out. Keynotes, panels, and fireside chats across the insurance channel.
           </p>
         </div>
         <button type="button" onClick={() => setShowForm(true)} className="cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>
@@ -107,7 +107,7 @@ export default function MicedUpView({ onBack }) {
           Gathering people in the channel?
         </div>
         <p style={{ ...fontDisplay, fontSize: "clamp(15px, 1.2vw, 17px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.6)", maxWidth: 640, marginTop: 0, marginBottom: 32 }}>
-          Networks, associations, masterminds, agencies, and conferences — put Casey on your stage.
+          Networks, associations, masterminds, agencies, and conferences: put Casey on your stage.
         </p>
         {!showForm ? (
           <button type="button" onClick={() => setShowForm(true)} className="cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em" }}>
