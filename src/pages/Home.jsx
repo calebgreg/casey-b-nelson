@@ -155,7 +155,7 @@ export default function Home({ initialView = "home" }) {
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
 
   const vendors = [
-    { name: "1Fort", category: "Commercial Lines", since: "07·26", thumb: "https://cdn.prod.website-files.com/61ca02c84b3663510844ab94/6a402495d7ef552bc397f05b_1Fort%20AI%C2%A0.svg", thumbBg: "#ffffff", thumbFit: "contain" },
+    { name: "1Fort", category: "Commercial Lines", since: "07·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/ca28005bb_generated_image.png" },
     { name: "Submissions Co.", category: "Submissions", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/1a13e9ac9_generated_image.png" },
     { name: "AgencyBeam", category: "AMS", since: "01·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/8800b4fd6_generated_image.png" },
     { name: "Hearth Compare", category: "Personal Lines", since: "03·26", thumb: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/de2946259_generated_image.png" },
