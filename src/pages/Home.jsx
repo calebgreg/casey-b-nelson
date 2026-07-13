@@ -207,7 +207,7 @@ export default function Home({ initialView = "home" }) {
         <div className="relative z-10 pointer-events-none">
 
           <h1 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(36px, 10vw, 240px)", lineHeight: 0.88, letterSpacing: "-0.045em", margin: 0, color: "var(--ink)", maxWidth: 1400 }}>
-            Media for the people <Bracket>rebuilding insurance</Bracket>.
+            Content for the people <Bracket>rebuilding insurance</Bracket>.
           </h1>
         </div>
 
