@@ -82,6 +82,26 @@ export default function HeroSpotlight() {
         className="absolute inset-0 w-full h-full"
         style={{ objectFit: "cover", objectPosition: "70% 40%", opacity: theme === "light" ? 0.14 : 1 }}
       />
+      {/* Slow, subtle color drift over the light beams */}
+      <style>{`
+        @keyframes heroTintCycle {
+          0%   { background-color: rgba(61, 202, 184, 0.0); }
+          18%  { background-color: rgba(61, 202, 184, 0.16); }
+          38%  { background-color: rgba(150, 120, 255, 0.13); }
+          58%  { background-color: rgba(255, 190, 110, 0.11); }
+          78%  { background-color: rgba(61, 202, 184, 0.14); }
+          100% { background-color: rgba(61, 202, 184, 0.0); }
+        }
+      `}</style>
+      <div
+        className="absolute inset-0"
+        style={{
+          mixBlendMode: "color",
+          animation: "heroTintCycle 45s ease-in-out infinite",
+          maskImage: "linear-gradient(90deg, transparent 0%, transparent 30%, black 65%)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, transparent 30%, black 65%)",
+        }}
+      />
       {/* Fade the left side to the page background so the headline stays crisp */}
       <div
         className="absolute inset-0"
