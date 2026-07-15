@@ -99,18 +99,6 @@
   --muted: #6B6760;
 }
 
-[data-theme="light"] {
-  --site-bg: #F0EBE0;
-  --bg-rgb: 240, 235, 224;
-  --panel: #E7E0D1;
-  --ink: #17140F;
-  --ink-rgb: 23, 20, 15;
-  --accent: #1D9E8C;
-  --accent-rgb: 29, 158, 140;
-  --accent-ink: #F0EBE0;
-  --muted: #857E70;
-}
-
 body {
   background-color: var(--site-bg);
 }

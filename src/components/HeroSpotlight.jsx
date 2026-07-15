@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { useTheme } from "@/lib/ThemeContext";
 
 const PHOTO =
   "https://images.unsplash.com/photo-1761998535969-11ca31e89f78?q=80&w=2400&auto=format&fit=crop";
 
 // Photorealistic spotlight photo + a subtle layer of drifting dust motes.
 export default function HeroSpotlight() {
-  const { theme } = useTheme();
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -44,7 +42,6 @@ export default function HeroSpotlight() {
       const r = canvas.getBoundingClientRect();
       const w = r.width, h = r.height;
       ctx.clearRect(0, 0, w, h);
-      const isLight = document.documentElement.dataset.theme === "light";
 
       dust.forEach((p) => {
         p.phase += p.speed;
@@ -57,7 +54,7 @@ export default function HeroSpotlight() {
         const lit = Math.pow(Math.max(0, (p.x / w - 0.35) / 0.65), 1.6);
         if (lit <= 0.02) return;
         const twinkle = 0.55 + 0.45 * Math.sin(p.phase * 3);
-        const alpha = lit * twinkle * (isLight ? 0.25 : 0.55);
+        const alpha = lit * twinkle * 0.55;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 248, 230, ${alpha})`;
@@ -80,7 +77,7 @@ export default function HeroSpotlight() {
         src={PHOTO}
         alt=""
         className="absolute inset-0 w-full h-full"
-        style={{ objectFit: "cover", objectPosition: "70% 40%", opacity: theme === "light" ? 0.14 : 1 }}
+        style={{ objectFit: "cover", objectPosition: "70% 40%" }}
       />
       {/* Slow, subtle color drift over the light beams */}
       <style>{`

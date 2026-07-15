@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "@/lib/ThemeContext";
 
 const fontDisplay = { fontFamily: '"Inter Tight", system-ui, sans-serif' };
 const fontSerif = { fontFamily: '"Instrument Serif", Georgia, serif' };
 const fontScript = { fontFamily: '"Ms Madi", "Brush Script MT", cursive' };
 
 export default function SiteHeader({ activeView = "", onNav }) {
-  const { theme, toggle: toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [wordmarkColor, setWordmarkColor] = useState(theme === "light" ? "#17140F" : "#ffffff");
+  const [wordmarkColor, setWordmarkColor] = useState("#ffffff");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,25 +17,15 @@ export default function SiteHeader({ activeView = "", onNav }) {
 
   // Scroll-driven wordmark color cycle
   useEffect(() => {
-    const palette = theme === "light"
-      ? [
-          [23, 20, 15],
-          [29, 158, 140],
-          [60, 54, 44],
-          [130, 90, 170],
-          [29, 158, 140],
-          [170, 120, 40],
-          [23, 20, 15],
-        ]
-      : [
-          [255, 255, 255],
-          [61, 202, 184],
-          [240, 235, 224],
-          [200, 150, 255],
-          [61, 202, 184],
-          [255, 200, 100],
-          [255, 255, 255],
-        ];
+    const palette = [
+      [255, 255, 255],
+      [61, 202, 184],
+      [240, 235, 224],
+      [200, 150, 255],
+      [61, 202, 184],
+      [255, 200, 100],
+      [255, 255, 255],
+    ];
     const lerp = (a, b, t) => a + (b - a) * t;
     const interpolateColor = (t) => {
       const scaled = t * (palette.length - 1);
@@ -62,7 +49,7 @@ export default function SiteHeader({ activeView = "", onNav }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [theme]);
+  }, []);
 
   const nav = (id) => {
     if (onNav) onNav(id);
@@ -88,9 +75,6 @@ export default function SiteHeader({ activeView = "", onNav }) {
             {activeView === item.id && <span className="inline-block" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", marginLeft: 6, transform: "translateY(-2px)" }} />}
           </button>
         ))}
-        <button type="button" onClick={toggleTheme} className="cursor-pointer" style={{ background: "transparent", border: "none", padding: 0, color: "rgba(var(--ink-rgb), 0.85)", display: "inline-flex", alignItems: "center" }} aria-label="Toggle theme">
-          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
       </nav>
     </header>
   );
