@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import VendorIntroDrawer from "@/components/VendorIntroDrawer";
+import HeroSpotlight from "@/components/HeroSpotlight";
 import SiteHeader from "@/components/SiteHeader";
 import PropertiesSection from "@/components/PropertiesSection";
 import AgencyXView from "@/components/AgencyXView";
@@ -13,8 +14,6 @@ export default function Home({ initialView = "home" }) {
   const [hoveredVendor, setHoveredVendor] = useState(null);
   const [thumbPos, setThumbPos] = useState({ x: 0, y: 0 });
   const [selectedVendor, setSelectedVendor] = useState(null);
-  const canvasRef = useRef(null);
-  const cursorRef = useRef({ x: 0, y: 0 });
 
   // Load fonts
   useEffect(() => {
@@ -26,130 +25,6 @@ export default function Home({ initialView = "home" }) {
     link.href =
       "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Ms+Madi&display=swap";
     document.head.appendChild(link);
-  }, []);
-
-  const activeViewRef = useRef(activeView);
-  useEffect(() => { activeViewRef.current = activeView; }, [activeView]);
-
-  // Hero network animation — runs once, persists across view changes
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let raf;
-    let nodes = [];
-    let connections = [];
-
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(dpr, dpr);
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const rect = canvas.getBoundingClientRect();
-    const NODE_COUNT = 56;
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodes.push({
-        x: Math.random() * rect.width,
-        y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
-        r: 1 + Math.random() * 1.4,
-      });
-    }
-
-    const spawnConnection = () => {
-      if (activeViewRef.current !== "home") return;
-      const a = Math.floor(Math.random() * nodes.length);
-      let b = Math.floor(Math.random() * nodes.length);
-      while (b === a) b = Math.floor(Math.random() * nodes.length);
-      connections.push({ a, b, life: 0, max: 180 + Math.random() * 120 });
-    };
-    const spawnInterval = setInterval(spawnConnection, 900);
-
-    const cursor = cursorRef.current;
-    const draw = () => {
-      // Still tick nodes so positions stay alive; skip drawing if not on home
-      if (activeViewRef.current !== "home") {
-        nodes.forEach((n) => {
-          n.x += n.vx;
-          n.y += n.vy;
-          const r = canvas.getBoundingClientRect();
-          if (n.x < 0 || n.x > r.width) n.vx *= -1;
-          if (n.y < 0 || n.y > r.height) n.vy *= -1;
-        });
-        raf = requestAnimationFrame(draw);
-        return;
-      }
-      const r = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, r.width, r.height);
-      const isLight = document.documentElement.dataset.theme === "light";
-      const inkRGB = isLight ? "23, 20, 15" : "240, 235, 224";
-      const accRGB = isLight ? "29, 158, 140" : "61, 202, 184";
-      nodes.forEach((n) => {
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > r.width) n.vx *= -1;
-        if (n.y < 0 || n.y > r.height) n.vy *= -1;
-        const dx = n.x - cursor.x;
-        const dy = n.y - cursor.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const proximity = Math.max(0, 1 - dist / 180);
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + proximity * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${inkRGB}, ${0.18 + proximity * 0.65})`;
-        ctx.fill();
-      });
-      connections = connections.filter((c) => c.life < c.max);
-      connections.forEach((c) => {
-        c.life++;
-        const t = c.life / c.max;
-        let alpha = 0;
-        if (t < 0.2) alpha = t / 0.2;
-        else if (t > 0.7) alpha = 1 - (t - 0.7) / 0.3;
-        else alpha = 1;
-        const a = nodes[c.a];
-        const b = nodes[c.b];
-        if (!a || !b) return;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = `rgba(${accRGB}, ${alpha * 0.55})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(a.x, a.y, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${accRGB}, ${alpha * 0.9})`;
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-
-    const handleMove = (e) => {
-      const r = canvas.getBoundingClientRect();
-      cursor.x = e.clientX - r.left;
-      cursor.y = e.clientY - r.top;
-    };
-    const handleLeave = () => { cursor.x = -9999; cursor.y = -9999; };
-    canvas.addEventListener("mousemove", handleMove);
-    canvas.addEventListener("mouseleave", handleLeave);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearInterval(spawnInterval);
-      window.removeEventListener("resize", resize);
-      canvas.removeEventListener("mousemove", handleMove);
-      canvas.removeEventListener("mouseleave", handleLeave);
-    };
   }, []);
 
   const goTo = (v) => { setActiveView(v); window.scrollTo({ top: 0 }); };
@@ -196,7 +71,7 @@ export default function Home({ initialView = "home" }) {
     <>
       {/* HERO */}
       <section className="relative flex flex-col justify-between" style={{ minHeight: "calc(100vh - 80px)", paddingTop: "clamp(60px, 12vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}>
-        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ pointerEvents: "auto" }} />
+        <HeroSpotlight />
 
         <div className="relative z-10 pointer-events-none">
 
