@@ -43,9 +43,48 @@ function Mark({ children }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [wordmarkColor, setWordmarkColor] = useState("#f0ece2");
+
+  useEffect(() => {
+    const palette = [
+      [240, 236, 226],
+      [72, 215, 197],
+      [240, 236, 226],
+      [214, 184, 255],
+      [72, 215, 197],
+      [255, 204, 117],
+      [240, 236, 226],
+    ];
+    const mix = (from, to, amount) => Math.round(from + (to - from) * amount);
+    let frame;
+
+    const updateColor = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(Math.max(window.scrollY / maxScroll, 0), 1) : 0;
+      const scaled = progress * (palette.length - 1);
+      const index = Math.min(Math.floor(scaled), palette.length - 2);
+      const amount = scaled - index;
+      const from = palette[index];
+      const to = palette[index + 1];
+      setWordmarkColor(`rgb(${mix(from[0], to[0], amount)}, ${mix(from[1], to[1], amount)}, ${mix(from[2], to[2], amount)})`);
+      frame = undefined;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateColor);
+    };
+
+    updateColor();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="Casey B. Nelson, home">
+      <a className="wordmark" href="#top" aria-label="Casey B. Nelson, home" style={{ color: wordmarkColor }}>
         Casey B. Nelson <sup>©</sup>
       </a>
       <button className="menu-button" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>
