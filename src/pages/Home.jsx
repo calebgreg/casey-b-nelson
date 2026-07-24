@@ -9,6 +9,7 @@ const properties = [
     copy: "Building an independent agency in public. The systems, the misses, the numbers, and the decisions that usually stay behind closed doors.",
     color: "#48d7c5",
     className: "property--agency",
+    href: "/agency-x",
   },
   {
     number: "02",
@@ -17,6 +18,7 @@ const properties = [
     copy: "Long-form conversations with the people changing how insurance gets sold, serviced, and understood.",
     color: "#d6b8ff",
     className: "property--miced",
+    href: "/miced-up",
   },
   {
     number: "03",
@@ -25,6 +27,7 @@ const properties = [
     copy: "The room where operators, agents, and builders stop posting and start comparing notes.",
     color: "#ffcc75",
     className: "property--community",
+    href: "/community",
   },
 ];
 
@@ -41,7 +44,37 @@ function Mark({ children }) {
   return <span className="mark">[{children}]</span>;
 }
 
-function Header() {
+function PropertyProof({ name }) {
+  if (name === "Agency X") {
+    return (
+      <div className="property-proof proof-episode">
+        <span>Latest field note · EP 04</span>
+        <strong>The renewal book nobody had touched in three years.</strong>
+        <div className="waveform" aria-hidden="true">{[18, 34, 52, 28, 68, 42, 76, 32, 58, 22, 46, 64, 36, 72, 44].map((height, index) => <i key={index} style={{ height }} />)}</div>
+        <small>47:23 · Watch the rebuild</small>
+      </div>
+    );
+  }
+  if (name === "Miced Up") {
+    return (
+      <div className="property-proof proof-road">
+        <span>Casey on the road · 2026</span>
+        <strong>Nashville<br />Las Vegas<br />Austin<br />Hartford</strong>
+        <small>Keynotes · Panels · Fireside chats</small>
+      </div>
+    );
+  }
+  return (
+    <div className="property-proof proof-community">
+      <span>Inside the room · Active now</span>
+      <p>Who’s actually renewed their AMS contract this year—and why?</p>
+      <p>Producer comp plans: post yours, roast mine.</p>
+      <small>400+ verified operators · No vendors</small>
+    </div>
+  );
+}
+
+export function Header() {
   const [open, setOpen] = useState(false);
   const [wordmarkColor, setWordmarkColor] = useState("#f0ece2");
 
@@ -91,9 +124,9 @@ function Header() {
         {open ? <X /> : <Menu />}
       </button>
       <nav className={open ? "nav nav--open" : "nav"} aria-label="Main navigation">
-        <a href="#properties" onClick={() => setOpen(false)}>Properties</a>
-        <a href="#directory" onClick={() => setOpen(false)}>The list</a>
-        <a href="#about" onClick={() => setOpen(false)}>About</a>
+        <a href="/#properties" onClick={() => setOpen(false)}>Properties</a>
+        <a href="/#directory" onClick={() => setOpen(false)}>The list</a>
+        <a href="/#about" onClick={() => setOpen(false)}>About</a>
         <a className="nav-cta" href="mailto:casey@caseybnelson.com">Talk to Casey <ArrowUpRight size={15} /></a>
       </nav>
     </header>
@@ -153,14 +186,12 @@ export default function Home() {
                   <span>{property.number}</span>
                   <span>{property.type}</span>
                 </div>
-                <div className="property-art" style={{ "--property": property.color }} aria-hidden="true">
-                  <span>{property.name.charAt(0)}</span>
-                </div>
+                <PropertyProof name={property.name} />
                 <div>
                   <h3>{property.name}</h3>
                   <p>{property.copy}</p>
                 </div>
-                <a href="mailto:casey@caseybnelson.com" aria-label={`Ask about ${property.name}`}>
+                <a href={property.href} aria-label={`Explore ${property.name}`}>
                   Enter property <ArrowUpRight size={18} />
                 </a>
               </article>
@@ -245,7 +276,7 @@ export default function Home() {
         <div className="footer-title">Let’s make the channel<br /><Mark>less boring.</Mark></div>
         <div className="footer-grid">
           <div><span>Start here</span><a href="mailto:casey@caseybnelson.com">casey@caseybnelson.com</a></div>
-          <div><span>Properties</span><a href="#properties">Agency X</a><a href="#properties">Miced Up</a><a href="#properties">The Community</a></div>
+          <div><span>Properties</span><a href="/agency-x">Agency X</a><a href="/miced-up">Miced Up</a><a href="/community">The Community</a></div>
           <div><span>Follow</span><a href="#top">LinkedIn ↗</a><a href="#top">YouTube ↗</a><a href="#top">Spotify ↗</a></div>
           <div><span>Colophon</span><p>Built in the open.<br />Made for independent operators.</p></div>
         </div>
