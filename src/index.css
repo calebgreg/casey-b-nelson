@@ -5,11 +5,16 @@
 
 :root {
   --bg: #090909;
+  --site-bg: #090909;
+  --bg-rgb: 9, 9, 9;
   --panel: #11110f;
   --ink: #f0ece2;
+  --ink-rgb: 240, 236, 226;
   --muted: #918d84;
   --line: rgba(240, 236, 226, 0.16);
   --accent: #48d7c5;
+  --accent-rgb: 72, 215, 197;
+  --accent-ink: #07110f;
   color: var(--ink);
   background: var(--bg);
   font-family: "Inter Tight", system-ui, sans-serif;
@@ -64,10 +69,16 @@ button, input { font: inherit; }
 .property-card:last-child { border-right: 0; }
 .property-card:hover { background: #141412; }
 .property-top { display: flex; justify-content: space-between; color: var(--muted); font: 500 10px "DM Mono"; text-transform: uppercase; letter-spacing: .08em; }
-.property-art { position: relative; flex: 1; min-height: 270px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--property), transparent 45%), transparent 36%), repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.025) 14px 15px); }
-.property-art::before, .property-art::after { content: ""; position: absolute; border: 1px solid color-mix(in srgb, var(--property), transparent 35%); border-radius: 50%; width: 68%; aspect-ratio: 1; }
-.property-art::after { width: 45%; transform: rotate(45deg); border-radius: 0; }
-.property-art span { position: relative; z-index: 2; font: italic 180px/.8 "Instrument Serif"; color: var(--property); text-shadow: 0 0 50px color-mix(in srgb, var(--property), transparent 35%); }
+.property-proof { flex: 1; min-height: 270px; padding: clamp(24px, 3vw, 42px); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; border: 1px solid rgba(240,236,226,.12); background: #0b0b0a; }
+.property-proof > span, .property-proof small { font: 500 9px/1.4 "DM Mono"; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.property-proof strong { font-size: clamp(25px, 2.3vw, 38px); line-height: 1.02; letter-spacing: -.04em; }
+.proof-episode { background: linear-gradient(145deg, rgba(72,215,197,.13), transparent 54%), #0b0b0a; }
+.proof-road { background: linear-gradient(145deg, rgba(214,184,255,.14), transparent 58%), #0b0b0a; }
+.proof-road strong { color: #d6b8ff; text-transform: uppercase; font-size: clamp(27px, 2.7vw, 44px); }
+.proof-community { background: linear-gradient(145deg, rgba(255,204,117,.12), transparent 58%), #0b0b0a; gap: 12px; }
+.proof-community p { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 14px; line-height: 1.3; }
+.waveform { height: 78px; display: flex; gap: 5px; align-items: center; }
+.waveform i { flex: 1; max-height: 100%; background: var(--accent); opacity: .75; }
 .property-card h3 { font-size: clamp(34px, 3vw, 52px); line-height: 1; letter-spacing: -.045em; margin: 0 0 14px; }
 .property-card p { color: #aaa69d; line-height: 1.55; margin: 0; }
 .property-card > a { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 18px; font: 500 11px "DM Mono"; text-transform: uppercase; }
@@ -117,6 +128,9 @@ footer { padding: clamp(90px, 12vw, 160px) clamp(20px, 4vw, 64px) 30px; backgrou
 
 [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
 [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+.property-page { max-width: 1680px; margin: 0 auto; padding: 110px clamp(20px, 5vw, 80px) 0; }
+.property-page section { min-height: 100vh; }
 
 @media (max-width: 900px) {
   .menu-button { display: block; }
