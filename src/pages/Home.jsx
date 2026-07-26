@@ -6,29 +6,32 @@ const properties = [
   {
     number: "01",
     name: "Agency X",
-    type: "Field Notes",
-    copy: "Building an independent agency in public. The systems, the misses, the numbers, and the decisions that usually stay behind closed doors.",
+    type: "The agency rebuild",
+    copy: "Watch a real agency get rebuilt, one decision, workflow, and field note at a time.",
     color: "#48d7c5",
     className: "property--agency",
     href: "/agency-x",
+    cta: "Watch the rebuild",
   },
   {
     number: "02",
     name: "Miced Up",
     type: "Speaking & Emceeing",
-    copy: "Keynotes, emceeing, panels, and fireside chats built for insurance rooms that want energy, clarity, and a host who knows the channel.",
+    copy: "Book Casey to speak or emcee your conference, association meeting, or agency gathering.",
     color: "#d6b8ff",
     className: "property--miced",
     href: "/miced-up",
+    cta: "Book Casey",
   },
   {
     number: "03",
     name: "The Community",
-    type: "In Real Life",
-    copy: "The room where operators, agents, and builders stop posting and start comparing notes.",
+    type: "Operator community",
+    copy: "Talk shop with agency principals and operators who know the work.",
     color: "#ffcc75",
     className: "property--community",
     href: "/community",
+    cta: "Request an invite",
   },
 ];
 
@@ -160,7 +163,7 @@ export default function Home() {
             <Mark>rebuilding insurance</Mark>.
           </h1>
           <div className="hero-bottom">
-            <p>Three properties. One obsession: how independent agencies actually get built.</p>
+            <p>Watch the rebuild. Book Casey. Join the conversation.</p>
             <a href="#properties" className="scroll-cue">Explore the work <ArrowDown size={18} /></a>
           </div>
           <div className="hero-stamp" aria-hidden="true">
@@ -172,12 +175,10 @@ export default function Home() {
 
         <section id="properties" className="section properties">
           <div className="section-kicker" data-reveal>
-            <span>01 / The work</span>
-            <span>Three ways in</span>
+            <span>01 / Start here</span>
           </div>
-          <div className="section-heading" data-reveal>
-            <h2>The <Mark>work.</Mark></h2>
-            <p>A show about rebuilding an agency. Speaking and emceeing for the insurance channel. A private room where operators compare notes.</p>
+          <div className="section-heading section-heading--solo" data-reveal>
+            <h2>Start <Mark>here.</Mark></h2>
           </div>
           <div className="property-grid">
             {properties.map((property) => (
@@ -192,7 +193,7 @@ export default function Home() {
                   <p>{property.copy}</p>
                 </div>
                 <a href={property.href} aria-label={`Explore ${property.name}`}>
-                  Enter property <ArrowUpRight size={18} />
+                  {property.cta} <ArrowUpRight size={18} />
                 </a>
               </article>
             ))}
