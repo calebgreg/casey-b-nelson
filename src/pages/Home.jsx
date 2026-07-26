@@ -50,7 +50,7 @@ function PropertyProof({ name }) {
     return (
       <div className="property-proof proof-episode">
         <span>Latest field note · EP 04</span>
-        <strong>The renewal book nobody had touched in three years.</strong>
+        <strong>Rebuilding a three-year renewal backlog.</strong>
         <div className="waveform" aria-hidden="true">{[18, 34, 52, 28, 68, 42, 76, 32, 58, 22, 46, 64, 36, 72, 44].map((height, index) => <i key={index} style={{ height }} />)}</div>
         <small>47:23 · Watch the rebuild</small>
       </div>
@@ -70,7 +70,7 @@ function PropertyProof({ name }) {
       <span>Inside the room · Active now</span>
       <p>Who’s actually renewed their AMS contract this year—and why?</p>
       <p>Producer comp plans: post yours, roast mine.</p>
-      <small>400+ verified operators · No vendors</small>
+      <small>400+ verified agency operators</small>
     </div>
   );
 }
@@ -164,7 +164,7 @@ export default function Home() {
             <a href="#properties" className="scroll-cue">Explore the work <ArrowDown size={18} /></a>
           </div>
           <div className="hero-stamp" aria-hidden="true">
-            <span>NO FLUFF</span>
+            <span>IN THE FIELD</span>
             <strong>CBN</strong>
             <span>ALL FIELD NOTES</span>
           </div>
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
           <div className="section-heading" data-reveal>
             <h2>Three properties.<br /><Mark>One point of view.</Mark></h2>
-            <p>Not a content machine. A connected body of work for the people doing the actual rebuilding.</p>
+            <p>One connected body of work for the people rebuilding independent insurance.</p>
           </div>
           <div className="property-grid">
             {properties.map((property) => (
@@ -204,7 +204,7 @@ export default function Home() {
           <div className="manifesto-inner" data-reveal>
             <p className="eyebrow">The working thesis</p>
             <blockquote>
-              “The best insurance content shouldn’t feel like insurance content. It should feel like someone finally <em>said the quiet part out loud.</em>”
+              “The best insurance content feels like someone finally <em>said the quiet part out loud.</em>”
             </blockquote>
             <p className="signature">Casey B. Nelson</p>
           </div>
@@ -217,7 +217,7 @@ export default function Home() {
           </div>
           <div className="directory-intro" data-reveal>
             <h2>On the <Mark>list.</Mark></h2>
-            <p>A deliberately short working directory of vendors worth the meeting. No pay-to-play ranking. No fifty-logo graveyard.</p>
+            <p>A deliberately short working directory of vendors Casey knows, follows, and considers worth the meeting.</p>
           </div>
           <div className="vendor-list">
             {vendors.map((vendor, index) => (
@@ -258,7 +258,7 @@ export default function Home() {
         <section className="newsletter">
           <div data-reveal>
             <p className="eyebrow">The monthly brief</p>
-            <h2>One useful email.<br /><Mark>No content sludge.</Mark></h2>
+            <h2>One monthly brief.<br /><Mark>Names worth knowing.</Mark></h2>
           </div>
           {subscribed ? (
             <p className="success">You’re on the list. Keep an eye on your inbox.</p>
@@ -276,7 +276,7 @@ export default function Home() {
       </main>
 
       <footer>
-        <div className="footer-title">Let’s make the channel<br /><Mark>less boring.</Mark></div>
+        <div className="footer-title">Keep the channel<br /><Mark>moving forward.</Mark></div>
         <div className="footer-grid">
           <div><span>Start here</span><a href="mailto:casey@caseybnelson.com">casey@caseybnelson.com</a></div>
           <div><span>Properties</span><a href="/agency-x">Agency X</a><a href="/miced-up">Miced Up</a><a href="/community">The Community</a></div>
