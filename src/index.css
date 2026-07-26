@@ -148,7 +148,6 @@ footer { padding: clamp(90px, 12vw, 160px) clamp(20px, 4vw, 64px) 30px; backgrou
   .property-card:last-child { border-bottom: 0; }
   .vendor-row { grid-template-columns: 45px 1fr 24px; }
   .vendor-category { display: none; }
-  .vendor-preview { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -158,11 +157,16 @@ footer { padding: clamp(90px, 12vw, 160px) clamp(20px, 4vw, 64px) 30px; backgrou
   .hero-bottom { align-items: flex-start; flex-direction: column; }
   .section-heading, .directory-intro { margin: 55px 0; }
   .directory-note { align-items: flex-start; flex-direction: column; }
+  .vendor-preview { display: none; }
   .newsletter form > div { flex-direction: column; border: 0; }
   .newsletter input { border-bottom: 1px solid var(--line); }
   .newsletter button { justify-content: center; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-title { margin-bottom: 80px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .vendor-preview { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
