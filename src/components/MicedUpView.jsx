@@ -70,26 +70,21 @@ export default function MicedUpView({ onBack }) {
       </div>
 
       {/* ON THE ROAD */}
-      <div id="road" style={{ marginBottom: "clamp(80px, 10vw, 140px)", scrollMarginTop: 100 }}>
-        <div className="flex items-baseline gap-4" style={{ marginBottom: "clamp(24px, 3vw, 40px)" }}>
-          <h3 style={{ ...fontDisplay, fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 64px)", lineHeight: 1, letterSpacing: "-0.035em", margin: 0, color: "var(--ink)" }}>On the road.</h3>
-          <span style={{ ...fontDisplay, fontWeight: 500, fontSize: 14, color: "var(--muted)" }}>2026</span>
-        </div>
-        <div style={{ borderTop: "1px solid rgba(var(--ink-rgb), 0.12)" }}>
+      <div id="road" className="mu-road" style={{ scrollMarginTop: 100 }}>
+        <div className="mu-road-meta">Casey on the road <span>·</span> 2026</div>
+        <div className="mu-road-list">
           {road.map((g) => (
-            <div key={g.event} className="grid items-center" style={{ gridTemplateColumns: "minmax(90px, 130px) 1fr auto", gap: "clamp(10px, 3vw, 40px)", padding: "clamp(20px, 2.5vw, 28px) 0", borderBottom: "1px solid rgba(var(--ink-rgb), 0.12)" }}>
-              <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 13, color: "var(--muted)", letterSpacing: "0.04em" }}>{g.date}</div>
-              <div>
-                <div style={{ ...fontDisplay, fontWeight: 700, fontSize: "clamp(18px, 2vw, 28px)", letterSpacing: "-0.02em", color: "var(--ink)", marginBottom: 4 }}>{g.event}</div>
-                <div style={{ ...fontSerif, fontStyle: "italic", fontSize: 14, color: "rgba(var(--ink-rgb), 0.55)" }}>{g.where} · {g.role}</div>
+            <article key={g.event} className="mu-road-stop">
+              <div className="mu-road-city">{g.where.split(",")[0]}</div>
+              <div className="mu-road-detail">
+                <div className="mu-road-date">{g.date}</div>
+                <div className="mu-road-event">{g.event}</div>
+                <div className="mu-road-role">{g.role} <span>·</span> {g.status}</div>
               </div>
-              <div className="hidden sm:inline-flex items-center gap-2" style={{ ...fontDisplay, fontSize: 12, color: "var(--accent)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)" }} />
-                {g.status}
-              </div>
-            </div>
+            </article>
           ))}
         </div>
+        <div className="mu-road-footer">Keynotes <span>·</span> Emceeing <span>·</span> Panels <span>·</span> Fireside chats</div>
       </div>
 
       {/* LEARNINGS FROM THE ROAD */}
