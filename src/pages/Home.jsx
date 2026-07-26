@@ -4,7 +4,6 @@ import HeroSpotlight from "../components/HeroSpotlight";
 
 const properties = [
   {
-    number: "01",
     name: "Agency X",
     type: "The agency rebuild",
     copy: "Watch a real agency get rebuilt, one decision, workflow, and field note at a time.",
@@ -14,7 +13,6 @@ const properties = [
     cta: "Watch the rebuild",
   },
   {
-    number: "02",
     name: "Miced Up",
     type: "Speaking & Emceeing",
     copy: "Book Casey to speak or emcee your conference, association meeting, or agency gathering.",
@@ -24,7 +22,6 @@ const properties = [
     cta: "Book Casey",
   },
   {
-    number: "03",
     name: "The Community",
     type: "Operator community",
     copy: "Talk shop with agency principals and operators who know the work.",
@@ -174,9 +171,6 @@ export default function Home() {
         </section>
 
         <section id="properties" className="section properties">
-          <div className="section-kicker" data-reveal>
-            <span>01 / Start here</span>
-          </div>
           <div className="section-heading section-heading--solo" data-reveal>
             <h2>Start <Mark>here.</Mark></h2>
           </div>
@@ -184,7 +178,6 @@ export default function Home() {
             {properties.map((property) => (
               <article className={`property-card ${property.className}`} key={property.name} data-reveal>
                 <div className="property-top">
-                  <span>{property.number}</span>
                   <span>{property.type}</span>
                 </div>
                 <PropertyProof name={property.name} />
@@ -213,7 +206,7 @@ export default function Home() {
 
         <section id="directory" className="section directory">
           <div className="section-kicker" data-reveal>
-            <span>02 / The directory</span>
+            <span>The directory</span>
             <span>Actively introducing</span>
           </div>
           <div className="directory-intro" data-reveal>
@@ -241,7 +234,7 @@ export default function Home() {
 
         <section id="about" className="section about">
           <div className="about-copy" data-reveal>
-            <p className="eyebrow">03 / Behind the byline</p>
+            <p className="eyebrow">Behind the byline</p>
             <h2>Operator first.<br /><Mark>Media company second.</Mark></h2>
             <p className="about-lede">Casey is building the thing he reports on: an independent agency, a media platform, and a more honest room for the insurance channel.</p>
             <p>The result is content with dirt under its fingernails—specific enough to use, candid enough to trust, and entertaining enough to finish.</p>
