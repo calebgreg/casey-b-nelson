@@ -154,7 +154,6 @@ export default function Home() {
         <section className="hero">
           <HeroSpotlight />
           <div className="hero-grain" aria-hidden="true" />
-          <p className="eyebrow hero-eyebrow">Independent insurance, on the record <span>●</span> Est. 2025</p>
           <h1>
             Content for the people
             <br />
