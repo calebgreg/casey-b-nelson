@@ -15,8 +15,8 @@ const properties = [
   {
     number: "02",
     name: "Miced Up",
-    type: "Conversations",
-    copy: "Long-form conversations with the people changing how insurance gets sold, serviced, and understood.",
+    type: "Speaking & Emceeing",
+    copy: "Keynotes, emceeing, panels, and fireside chats built for insurance rooms that want energy, clarity, and a host who knows the channel.",
     color: "#d6b8ff",
     className: "property--miced",
     href: "/miced-up",
@@ -125,7 +125,7 @@ export function Header() {
         {open ? <X /> : <Menu />}
       </button>
       <nav className={open ? "nav nav--open" : "nav"} aria-label="Main navigation">
-        <a href="/#properties" onClick={() => setOpen(false)}>Properties</a>
+        <a href="/#properties" onClick={() => setOpen(false)}>The work</a>
         <a href="/#directory" onClick={() => setOpen(false)}>The list</a>
         <a href="/#about" onClick={() => setOpen(false)}>About</a>
         <a className="nav-cta" href="mailto:casey@caseybnelson.com">Talk to Casey <ArrowUpRight size={15} /></a>
@@ -172,12 +172,12 @@ export default function Home() {
 
         <section id="properties" className="section properties">
           <div className="section-kicker" data-reveal>
-            <span>01 / The network</span>
+            <span>01 / The work</span>
             <span>Three ways in</span>
           </div>
           <div className="section-heading" data-reveal>
-            <h2>Three properties.<br /><Mark>One point of view.</Mark></h2>
-            <p>One connected body of work for the people rebuilding independent insurance.</p>
+            <h2>The <Mark>work.</Mark></h2>
+            <p>A show about rebuilding an agency. Speaking and emceeing for the insurance channel. A private room where operators compare notes.</p>
           </div>
           <div className="property-grid">
             {properties.map((property) => (
@@ -279,7 +279,7 @@ export default function Home() {
         <div className="footer-title">Keep the channel<br /><Mark>moving forward.</Mark></div>
         <div className="footer-grid">
           <div><span>Start here</span><a href="mailto:casey@caseybnelson.com">casey@caseybnelson.com</a></div>
-          <div><span>Properties</span><a href="/agency-x">Agency X</a><a href="/miced-up">Miced Up</a><a href="/community">The Community</a></div>
+          <div><span>The work</span><a href="/agency-x">Agency X</a><a href="/miced-up">Miced Up</a><a href="/community">The Community</a></div>
           <div><span>Follow</span><a href="#top">LinkedIn ↗</a><a href="#top">YouTube ↗</a><a href="#top">Spotify ↗</a></div>
           <div><span>Colophon</span><p>Built in the open.<br />Made for independent operators.</p></div>
         </div>
