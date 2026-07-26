@@ -240,11 +240,15 @@ export default function Home() {
             <p>The result is content with dirt under its fingernails—specific enough to use, candid enough to trust, and entertaining enough to finish.</p>
           </div>
           <div className="about-panel" data-reveal>
-            <div className="about-monogram">CBN</div>
-            <div className="about-meta">
-              <span>Based in the U.S.</span>
-              <span>Working nationwide</span>
-              <span>Independent by design</span>
+            <img src="/images/miced-up/img-9759.webp" alt="Casey Nelson being filmed between conference sessions" />
+            <div className="about-panel-shade" aria-hidden="true" />
+            <div className="about-panel-top">
+              <span>Casey B. Nelson</span>
+              <span>In the field</span>
+            </div>
+            <div className="about-panel-bottom">
+              <strong>Operator.<br />Host. Emcee.</strong>
+              <span>Independent insurance<br />without the press release.</span>
             </div>
           </div>
         </section>
