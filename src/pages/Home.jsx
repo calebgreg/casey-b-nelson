@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Menu, X } from "lucide-react";
+import HeroSpotlight from "../components/HeroSpotlight";
 
 const properties = [
   {
@@ -32,12 +33,12 @@ const properties = [
 ];
 
 const vendors = [
-  ["1Fort AI", "Commercial Lines"],
-  ["Submissions Co.", "Submissions"],
-  ["AgencyBeam", "AMS"],
-  ["Hearth Compare", "Personal Lines"],
-  ["BenefitsBeam", "Benefits"],
-  ["ClaimsFlow", "Claims"],
+  { name: "1Fort AI", category: "Commercial Lines", image: "https://base44.app/api/apps/6a037576ebf42363ca2506d2/files/mp/public/6a037576ebf42363ca2506d2/3cc89497b_1fort-transparent-v3.png", fit: "contain", background: "#26251f" },
+  { name: "Submissions Co.", category: "Submissions", image: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/1a13e9ac9_generated_image.png" },
+  { name: "AgencyBeam", category: "AMS", image: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/8800b4fd6_generated_image.png" },
+  { name: "Hearth Compare", category: "Personal Lines", image: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/de2946259_generated_image.png" },
+  { name: "BenefitsBeam", category: "Benefits", image: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/ea9e8aa0c_generated_image.png" },
+  { name: "ClaimsFlow", category: "Claims", image: "https://media.base44.com/images/public/6a037576ebf42363ca2506d2/22b20e4f6_generated_image.png" },
 ];
 
 function Mark({ children }) {
@@ -151,7 +152,7 @@ export default function Home() {
 
       <main>
         <section className="hero">
-          <div className="hero-beam" aria-hidden="true" />
+          <HeroSpotlight />
           <div className="hero-grain" aria-hidden="true" />
           <p className="eyebrow hero-eyebrow">Independent insurance, on the record <span>●</span> Est. 2025</p>
           <h1>
@@ -220,11 +221,14 @@ export default function Home() {
             <p>A deliberately short working directory of vendors worth the meeting. No pay-to-play ranking. No fifty-logo graveyard.</p>
           </div>
           <div className="vendor-list">
-            {vendors.map(([name, category], index) => (
-              <a href={`mailto:casey@caseybnelson.com?subject=Introduction to ${encodeURIComponent(name)}`} className="vendor-row" key={name} data-reveal>
+            {vendors.map((vendor, index) => (
+              <a href={`mailto:casey@caseybnelson.com?subject=Introduction to ${encodeURIComponent(vendor.name)}`} className="vendor-row" key={vendor.name} data-reveal>
                 <span className="vendor-number">{String(index + 1).padStart(2, "0")}</span>
-                <strong>{name}</strong>
-                <span>{category}</span>
+                <strong>{vendor.name}</strong>
+                <span className="vendor-preview" style={{ background: vendor.background || "#111" }}>
+                  <img src={vendor.image} alt="" style={{ objectFit: vendor.fit || "cover" }} />
+                </span>
+                <span className="vendor-category">{vendor.category}</span>
                 <ArrowUpRight />
               </a>
             ))}
