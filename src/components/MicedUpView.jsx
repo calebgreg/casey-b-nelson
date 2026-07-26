@@ -27,26 +27,50 @@ export default function MicedUpView({ onBack }) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
-      <button type="button" onClick={onBack} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "var(--muted)", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
+    <section className="mu-page" style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
+      <button type="button" onClick={onBack} className="mu-back">← Casey B. Nelson</button>
 
-      <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 20 }}>Speaking & emceeing · The insurance channel</div>
-      <div className="flex flex-wrap items-end justify-between" style={{ gap: 24, marginBottom: "clamp(48px, 6vw, 72px)" }}>
-        <div>
-          <h2 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(56px, 11vw, 140px)", lineHeight: 0.92, letterSpacing: "-0.04em", margin: "0 0 32px 0", color: "var(--ink)" }}>
-            Miced Up.
-          </h2>
-          <p style={{ ...fontDisplay, fontSize: "clamp(17px, 1.3vw, 19px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.62)", maxWidth: 600, margin: 0 }}>
-            Casey on the mic. Keynotes, emceeing, panels, and fireside chats for conferences, associations, networks, and agency gatherings across the insurance channel.
-          </p>
+      <div className="mu-hero">
+        <div className="mu-hero-copy">
+          <div className="mu-kicker">Speaking & emceeing · The insurance channel</div>
+          <h1>Miced <i>Up.</i></h1>
+          <p>Casey speaks insurance without sounding like an insurance conference.</p>
+          <div className="mu-hero-actions">
+            <button type="button" onClick={() => setShowForm(true)}>Book Casey →</button>
+            <a href="#road">See the 2026 schedule ↓</a>
+          </div>
         </div>
-        <button type="button" onClick={() => setShowForm(true)} className="cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>
-          Book Casey →
-        </button>
+
+        <div className="mu-photo-stage">
+          <figure className="mu-photo mu-photo--main">
+            <img src="/images/miced-up/img-9821.webp" alt="Casey presenting on stage" />
+          </figure>
+          <figure className="mu-photo mu-photo--close">
+            <img src="/images/miced-up/img-0578.webp" alt="Casey speaking into a microphone" />
+          </figure>
+          <div className="mu-photo-stamp" aria-hidden="true"><span>LIVE</span><strong>MICED<br />UP</strong><small>ON THE ROAD</small></div>
+          <div className="mu-tape mu-tape--one" aria-hidden="true">KEYNOTES · EMCEEING · PANELS ·</div>
+          <div className="mu-tape mu-tape--two" aria-hidden="true">INSURANCE, WITH A PULSE ·</div>
+        </div>
+      </div>
+
+      <div className="mu-contact-sheet">
+        <figure>
+          <img src="/images/miced-up/img-9759.webp" alt="Casey being filmed on a beachside boardwalk" />
+          <figcaption><span>Between sessions</span><strong>On camera in Huntington Beach</strong></figcaption>
+        </figure>
+        <figure>
+          <img src="/images/miced-up/img-0576.webp" alt="Casey presenting from a conference podium" />
+          <figcaption><span>From the room</span><strong>Working the ideas live</strong></figcaption>
+        </figure>
+        <div className="mu-contact-copy">
+          <span>Onstage / offstage</span>
+          <p>The keynote is one part of the job. Casey studies the room, talks with operators, and carries what he hears into the next conversation.</p>
+        </div>
       </div>
 
       {/* ON THE ROAD */}
-      <div style={{ marginBottom: "clamp(80px, 10vw, 140px)" }}>
+      <div id="road" style={{ marginBottom: "clamp(80px, 10vw, 140px)", scrollMarginTop: 100 }}>
         <div className="flex items-baseline gap-4" style={{ marginBottom: "clamp(24px, 3vw, 40px)" }}>
           <h3 style={{ ...fontDisplay, fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 64px)", lineHeight: 1, letterSpacing: "-0.035em", margin: 0, color: "var(--ink)" }}>On the road.</h3>
           <span style={{ ...fontDisplay, fontWeight: 500, fontSize: 14, color: "var(--muted)" }}>2026</span>
