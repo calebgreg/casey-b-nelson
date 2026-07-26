@@ -44,8 +44,8 @@ button, input { font: inherit; }
 .menu-button { display: none; border: 0; background: none; color: var(--ink); }
 
 .hero { position: relative; min-height: 100svh; padding: 150px clamp(20px, 4vw, 64px) 48px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; isolation: isolate; }
-.hero::before { content: ""; position: absolute; inset: 0; z-index: -3; background: radial-gradient(circle at 74% 39%, rgba(72,215,197,.13), transparent 26%), radial-gradient(circle at 78% 36%, rgba(255,255,255,.08), transparent 2%), #090909; }
-.hero-beam { position: absolute; z-index: -2; width: 70vw; height: 130vh; right: -28vw; top: -30vh; transform: rotate(-18deg); background: linear-gradient(90deg, transparent, rgba(72,215,197,.14), rgba(255,255,255,.17), transparent 57%); filter: blur(10px); opacity: .8; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -3; background: #090909; }
+.hero > .absolute.inset-0 { z-index: -2; }
 .hero-grain { position: absolute; z-index: -1; inset: 0; opacity: .28; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
 .eyebrow { font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .hero-eyebrow { display: flex; gap: 16px; align-items: center; }
@@ -94,10 +94,13 @@ blockquote em { font-family: "Instrument Serif"; font-weight: 400; }
 .directory-intro { display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 60px; margin: 80px 0; }
 .directory-intro p { color: #aaa69d; font-size: 18px; line-height: 1.5; max-width: 470px; }
 .vendor-list { border-top: 1px solid var(--line); }
-.vendor-row { display: grid; grid-template-columns: 60px 1fr 220px 30px; align-items: center; gap: 20px; min-height: 100px; border-bottom: 1px solid var(--line); transition: padding .25s, color .25s; }
+.vendor-row { position: relative; display: grid; grid-template-columns: 60px 1fr 220px 30px; align-items: center; gap: 20px; min-height: 100px; border-bottom: 1px solid var(--line); transition: padding .25s, color .25s; }
 .vendor-row:hover { padding: 0 20px; color: var(--accent); }
 .vendor-number, .vendor-row > span { font: 400 11px "DM Mono"; color: var(--muted); text-transform: uppercase; }
 .vendor-row strong { font-size: clamp(27px, 3.6vw, 58px); letter-spacing: -.04em; }
+.vendor-preview { position: absolute; z-index: 4; left: clamp(280px, 48vw, 760px); top: 50%; width: clamp(150px, 18vw, 260px); aspect-ratio: 1.55; overflow: hidden; border: 1px solid rgba(240,236,226,.18); box-shadow: 0 24px 70px rgba(0,0,0,.6); opacity: 0; transform: translate(-50%, -42%) rotate(-2deg) scale(.92); pointer-events: none; transition: opacity .22s ease, transform .32s cubic-bezier(.2,.8,.2,1); }
+.vendor-preview img { width: 100%; height: 100%; display: block; }
+.vendor-row:hover .vendor-preview, .vendor-row:focus-visible .vendor-preview { opacity: 1; transform: translate(-50%, -50%) rotate(1.5deg) scale(1); }
 .directory-note { margin-top: 50px; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .directory-note p { font: italic 26px "Instrument Serif"; color: var(--muted); }
 .directory-note a, .newsletter button { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #07110f; padding: 16px 20px; font-weight: 700; }
@@ -144,7 +147,8 @@ footer { padding: clamp(90px, 12vw, 160px) clamp(20px, 4vw, 64px) 30px; backgrou
   .property-card { min-height: 590px; border-right: 0; border-bottom: 1px solid var(--line); }
   .property-card:last-child { border-bottom: 0; }
   .vendor-row { grid-template-columns: 45px 1fr 24px; }
-  .vendor-row > span:nth-of-type(2) { display: none; }
+  .vendor-category { display: none; }
+  .vendor-preview { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
