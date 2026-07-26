@@ -30,14 +30,14 @@ export default function MicedUpView({ onBack }) {
     <section style={{ padding: "clamp(40px, 8vw, 120px) 0" }}>
       <button type="button" onClick={onBack} className="cursor-pointer" style={{ background: "transparent", border: "none", ...fontDisplay, fontSize: 13, color: "var(--muted)", marginBottom: 60, padding: 0, letterSpacing: "0.04em" }}>← back</button>
 
-      <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 20 }}>Property 02 · The stage</div>
+      <div style={{ ...fontDisplay, fontWeight: 500, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 20 }}>Speaking & emceeing · The insurance channel</div>
       <div className="flex flex-wrap items-end justify-between" style={{ gap: 24, marginBottom: "clamp(48px, 6vw, 72px)" }}>
         <div>
           <h2 style={{ ...fontDisplay, fontWeight: 900, fontSize: "clamp(56px, 11vw, 140px)", lineHeight: 0.92, letterSpacing: "-0.04em", margin: "0 0 32px 0", color: "var(--ink)" }}>
             Miced Up.
           </h2>
           <p style={{ ...fontDisplay, fontSize: "clamp(17px, 1.3vw, 19px)", lineHeight: 1.55, color: "rgba(var(--ink-rgb), 0.62)", maxWidth: 600, margin: 0 }}>
-            Casey on the road. The stages, the learnings, and the people worth calling out. Keynotes, panels, and fireside chats across the insurance channel.
+            Casey on the mic. Keynotes, emceeing, panels, and fireside chats for conferences, associations, networks, and agency gatherings across the insurance channel.
           </p>
         </div>
         <button type="button" onClick={() => setShowForm(true)} className="cursor-pointer" style={{ ...fontDisplay, fontWeight: 600, fontSize: 14, color: "var(--accent-ink)", background: "var(--accent)", border: "none", padding: "14px 26px", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>
